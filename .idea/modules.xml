@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Amazing_Grace_Modules.iml" filepath="$PROJECT_DIR$/Amazing_Grace_Modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AG_Modules.iml" filepath="$PROJECT_DIR$/AG_Modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag_baidumap/ag_baidumap.iml" filepath="$PROJECT_DIR$/ag_baidumap/ag_baidumap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag_common/ag_common.iml" filepath="$PROJECT_DIR$/ag_common/ag_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag_getui_push/ag_getui_push.iml" filepath="$PROJECT_DIR$/ag_getui_push/ag_getui_push.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag_pay/ag_pay.iml" filepath="$PROJECT_DIR$/ag_pay/ag_pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag_scancode/ag_scancode.iml" filepath="$PROJECT_DIR$/ag_scancode/ag_scancode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag_share/ag_share.iml" filepath="$PROJECT_DIR$/ag_share/ag_share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag_umeng_push/ag_umeng_push.iml" filepath="$PROJECT_DIR$/ag_umeng_push/ag_umeng_push.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

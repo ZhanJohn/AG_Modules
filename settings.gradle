@@ -1,1 +1,1 @@
-include ':app'
+include ':app', ':ag_umeng_push', ':ag_getui_push', ':ag_share', ':ag_common', ':ag_scancode', ':ag_pay', ':ag_baidumap'

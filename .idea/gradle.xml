@@ -9,12 +9,26 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ag_baidumap" />
+            <option value="$PROJECT_DIR$/ag_common" />
+            <option value="$PROJECT_DIR$/ag_getui_push" />
+            <option value="$PROJECT_DIR$/ag_pay" />
+            <option value="$PROJECT_DIR$/ag_scancode" />
+            <option value="$PROJECT_DIR$/ag_share" />
+            <option value="$PROJECT_DIR$/ag_umeng_push" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ag_baidumap" />
+            <option value="$PROJECT_DIR$/ag_common" />
+            <option value="$PROJECT_DIR$/ag_getui_push" />
+            <option value="$PROJECT_DIR$/ag_pay" />
+            <option value="$PROJECT_DIR$/ag_scancode" />
+            <option value="$PROJECT_DIR$/ag_share" />
+            <option value="$PROJECT_DIR$/ag_umeng_push" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
