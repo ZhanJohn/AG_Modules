@@ -15,3 +15,26 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+#-keep class com.umeng.message.* {
+#    public <fields>;
+#    public <methods>;
+#}
+#
+#-keep class com.umeng.message.protobuffer.* {
+#	public <fields>;
+#    public <methods>;
+#}
+#
+#-keep class com.squareup.wire.* {
+#	public <fields>;
+#    public <methods>;
+#}
+#
+#-keep class org.android.agoo.impl.*{
+#	public <fields>;
+#    public <methods>;
+#}
+#
+#-keep class org.android.agoo.service.* {*;}
+#
+#-keep class org.android.spdy.**{*;}

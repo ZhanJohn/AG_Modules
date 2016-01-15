@@ -8,6 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.ag.umeng_push.AGPushUMeng;
+import com.ag.umeng_push.IUMengPushReceiver;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +30,24 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        AGPushUMeng.getInstance().initialize(getApplicationContext(), new IUMengPushReceiver() {
+            @Override
+            public void onReceive(String result) {
+                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onBindResult(boolean isSuccess) {
+
+            }
+
+            @Override
+            public void onUnBindResult(boolean isSuccess) {
+
+            }
+        });
+
     }
 
     @Override

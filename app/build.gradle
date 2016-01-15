@@ -10,6 +10,12 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+//        multiDexEnabled true
+        manifestPlaceholders = [
+                PACKAGE_NAME    : applicationId,
+                UMENG_APPKEY    :"5698aaabe0f55ab2c10018d8",
+                UMENG_MESSAGE_SECRET:"5b04fabbc72cf1b73e7119bac75d53d6"
+        ]
     }
     buildTypes {
         release {
@@ -24,8 +30,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+//    compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
+
+    compile project(':ag_umeng_push')
 }
