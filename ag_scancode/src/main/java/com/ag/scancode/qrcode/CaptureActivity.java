@@ -46,7 +46,7 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.Map;
 
-public class CaptureActivity extends Activity implements SurfaceHolder.Callback, OnClickListener {
+public abstract class CaptureActivity extends Activity implements SurfaceHolder.Callback, OnClickListener {
 
 	private static final String TAG = CaptureActivity.class.getSimpleName();
 
@@ -102,9 +102,6 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback,
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-
-//		System.gc();
-
 		Window window = getWindow();
 		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(ResourceUtil.getLayoutByName(this, "activity_capture"));
@@ -390,19 +387,17 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback,
 	 * @param scaleFactor amount by which thumbnail was scaled
 	 * @param barcode   A greyscale bitmap of the camera data which was decoded.
 	 */
-	protected void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
+	private void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
 		inactivityTimer.onActivity();
 		lastResult = rawResult;
 		handleDecode(rawResult.getText());
 	}
 
 	/**
-	 * 请重载这个方法获取扫码结果
+	 * 请重写这个方法获取扫码结果
 	 * @param scanResult
      */
-	public void handleDecode(String scanResult){
-
-	}
+	public abstract void handleDecode(String scanResult);
 
 	/**
 	 * Superimpose a line for 1D or dots for 2D to highlight the key features of the barcode.

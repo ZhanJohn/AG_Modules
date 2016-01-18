@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 左右滑动tab效果的 -->
+    <color name="background_window">#FFE5E5E5</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    
+    <color name="gray_text">#787878</color>
+    <color name="ccc">#CCCCCC</color>
+    <!-- 下拉菜单分割线 -->
+    <color name="pop_blue">#009cd9</color>
+    <!-- 蓝色按钮 -->
+    <color name="button_bg_blue">#00b0f6</color>
+    <color name="cor2">#f8f8f8</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    
+    <color name="half_transparent">#88000000</color>
+	<color name="half_transparent2">#88000000</color>
+	<color name="half_transparent3">#88ffffff</color>
+	<color name="half_transparent4">#c0000000</color>
+	<color name="half_transparent5">#99000000</color>
+	
+    <color name="lightgreen">#99CC33</color>
+    <color name="green">#00CC00</color>
+    <!-- 底部栏背景色 -->
+    <!-- <color name="bottom_bg">#f9fafe</color> -->
+    <!-- 底部栏横线 -->
+    <color name="bottom_line">#c8c8c8</color>
+    <!-- 深蓝色按钮 -->
+    <color name="button_bg_blue2">#009cda</color>
+    <!-- 浅蓝色按钮 -->
+    <color name="button_bg_blue3">#5fcbef</color>
+    <!-- 浅蓝色按钮点击后 -->
+    <color name="button_bg_blue4">#54badb</color>
+    <!-- 蓝色按钮点击颜色-->
+    <color name="button_pressed_bg_blue">#009cda</color>
+    <!-- 灰色按钮 -->
+    <color name="button_bg_gray">#e8e8e8</color>
+    <!-- 浅灰色字体 -->
+    <color name="font_gray_light">#7d7b7c</color>
+    <!-- 深灰色字体 -->
+    <color name="font_gray_dark">#5a5a5a</color>
+    <!-- 蓝色输入框底边 --> 
+    <color name="edit_blue">#00b0f6</color>
+</resources>
