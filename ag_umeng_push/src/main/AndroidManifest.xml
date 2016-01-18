@@ -1,9 +1,35 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.ag.umeng_push">
 
-    <application android:allowBackup="true">
+    <!-- 必选 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+    <!-- 可选 -->
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <permission
+        android:name="${PACKAGE_NAME}.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signatureOrSystem" />
+    <uses-permission android:name="${PACKAGE_NAME}.permission.MIPUSH_RECEIVE" />
 
-
+    <application>
 
         <!-- 监听通知点击或者忽略处理的广播 -->
         <receiver
@@ -125,8 +151,6 @@
         <!-- 如果不使用本地通知，可以注释掉本地通知服务的配置 -->
         <service android:name="com.umeng.message.local.UmengLocalNotificationService"
             android:exported="false" />
-
-
 
         <meta-data
             android:name="UMENG_APPKEY"

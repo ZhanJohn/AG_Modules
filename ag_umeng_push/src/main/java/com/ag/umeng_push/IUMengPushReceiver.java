@@ -21,4 +21,6 @@ public interface IUMengPushReceiver {
      */
     void onUnBindResult(boolean isSuccess);
 
+    void onRegisterDeviceToken(String deviceToken);
+
 }

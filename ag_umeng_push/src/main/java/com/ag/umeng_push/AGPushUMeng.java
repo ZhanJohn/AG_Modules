@@ -2,15 +2,21 @@ package com.ag.umeng_push;
 
 import android.app.Notification;
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.app.NotificationCompat;
+import android.text.TextUtils;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.umeng.common.message.UmengMessageDeviceConfig;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.IUmengUnregisterCallback;
+import com.umeng.message.MsgConstant;
 import com.umeng.message.PushAgent;
 import com.umeng.message.UmengMessageHandler;
 import com.umeng.message.UmengNotificationClickHandler;
+import com.umeng.message.UmengRegistrar;
 import com.umeng.message.entity.UMessage;
 
 /**
@@ -18,6 +24,8 @@ import com.umeng.message.entity.UMessage;
  */
 public class AGPushUMeng {
 
+    private static String TAG="AGPushUMeng";
+    private String deviceId;
     private static AGPushUMeng agPushUMeng=new AGPushUMeng();
     private AGPushUMeng(){}
 
@@ -29,23 +37,48 @@ public class AGPushUMeng {
     private PushAgent mPushAgent;
     private IUMengPushReceiver iuMengPushReceiver;
 
-    public void initialize(Context context,IUMengPushReceiver iuMengPushReceiver){
+    public void initialize(Context context,IUMengPushReceiver mengPushReceiver){
         this.mContext=context;
-        this.iuMengPushReceiver=iuMengPushReceiver;
+        this.iuMengPushReceiver=mengPushReceiver;
         mPushAgent=PushAgent.getInstance(context);
         mPushAgent.setDebugMode(true);
-        //开启友盟推送
-        mPushAgent.enable(new IUmengRegisterCallback() {
-            @Override
-            public void onRegistered(String registrationId) {
-                System.out.println("onRegistered=="+registrationId);
-                //String device_token = UmengRegistrar.getRegistrationId(mContext);
-            }
-        });
 
         //设置消息显示和处理
         mPushAgent.setMessageHandler(umengMessageHandler);
         mPushAgent.setNotificationClickHandler(umengNotificationClickHandler);
+
+        mPushAgent.onAppStart();
+
+        //开启友盟推送
+        mPushAgent.enable(new IUmengRegisterCallback() {
+            @Override
+            public void onRegistered(String registrationId) {
+//                System.out.println("onRegistered=="+registrationId);
+//                iuMengPushReceiver.onRegisterDeviceToken(registrationId);
+                //String device_token = UmengRegistrar.getRegistrationId(mContext);
+            }
+        });
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
+                do {
+                    deviceId = UmengRegistrar.getRegistrationId(mContext);
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        // TODO 自动生成的 catch 块
+                        e.printStackTrace();
+                    }
+                } while (TextUtils.isEmpty(deviceId));
+
+                iuMengPushReceiver.onRegisterDeviceToken(deviceId);
+            }
+        }, 1000);
+
+        PushAgent.sendSoTimeout(mContext, 600);	//设置护保进程间隔时间
 
     }
 
@@ -117,5 +150,15 @@ public class AGPushUMeng {
 //            Toast.makeText(context, "dealWithCustomAction=="+uMessage.custom, Toast.LENGTH_LONG).show();
         }
     };
+
+    public String getPushParams(){
+        String info = String.format("enabled:%s  isRegistered:%s  DeviceToken:%s " +
+                        "SdkVersion:%s AppVersionCode:%s AppVersionName:%s",
+                mPushAgent.isEnabled(), mPushAgent.isRegistered(),
+                mPushAgent.getRegistrationId(), MsgConstant.SDK_VERSION,
+                UmengMessageDeviceConfig.getAppVersionCode(mContext), UmengMessageDeviceConfig.getAppVersionName(mContext));
+        Log.d(TAG,info);
+        return info;
+    }
 
 }
