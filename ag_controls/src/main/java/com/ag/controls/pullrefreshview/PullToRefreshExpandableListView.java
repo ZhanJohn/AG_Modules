@@ -23,7 +23,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ExpandableListView;
 
-import com.handmark.pulltorefresh.library.internal.EmptyViewMethodAccessor;
+import com.ag.controls.pullrefreshview.internal.EmptyViewMethodAccessor;
 
 public class PullToRefreshExpandableListView extends PullToRefreshAdapterViewBase<ExpandableListView> {
 

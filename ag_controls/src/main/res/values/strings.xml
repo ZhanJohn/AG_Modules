@@ -1,3 +1,19 @@
 <resources>
+    <string name="str_load">加载中</string>
+    <!-- 下拉刷新需要部分   -->
+    <string name="pull_to_refresh_time_label">更新于：08.09 00:00</string>
 
+    <!--下拉刷新-->
+    <string name="pull_to_refresh_more_label">加载更多</string>
+    <string name="pull_to_refresh_tap_label">触摸下拉刷新...</string>
+
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">松开后刷新</string>
+    <string name="pull_to_refresh_refreshing_label">加载中...</string>
+    <string name="pull_to_refresh_footer_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_footer_release_label">松开后加载</string>
+    <string name="pull_to_refresh_footer_refreshing_label">加载中...</string>
+    <string name="pushmsg_center_no_more_msg">内容已全部加载完成</string>
+    <string name="pull_to_refresh_last_update">最后刷新:</string>
+    <!-- 下拉刷新结束 -->
 </resources>

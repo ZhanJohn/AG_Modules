@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.zq.adapter.helper.BaseAdapterHelper.get;
+import static com.ag.controls.common.adapter.BaseAdapterHelper.get;
 
 /**
  * Abstraction class of a BaseAdapter in which you only need to provide the

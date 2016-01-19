@@ -37,9 +37,9 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.zq.controls.CircleImageView;
-import com.zq.controls.NetImageParam;
-import com.zq.controls.NetImageView;
+import com.ag.controls.customview.CircleImageView;
+import com.ag.controls.customview.NetImageParam;
+import com.ag.controls.customview.NetImageView;
 
 /**
  * Allows an abstraction of the ViewHolder pattern.<br>

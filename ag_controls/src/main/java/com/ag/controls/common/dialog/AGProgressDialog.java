@@ -9,6 +9,8 @@ import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.ag.controls.R;
+
 /**
  * 简易对话框
  */

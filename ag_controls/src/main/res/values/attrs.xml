@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SlidingMenu">
+        <attr name="mode">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+        <attr name="viewAbove" format="reference"/>
+        <attr name="viewBehind" format="reference"/>
+        <attr name="behindOffset" format="dimension"/>
+        <attr name="behindWidth" format="dimension"/>
+        <attr name="behindScrollScale" format="float"/>
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0"/>
+            <enum name="fullscreen" value="1"/>
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0"/>
+            <enum name="fullscreen" value="1"/>
+        </attr>
+        <attr name="shadowDrawable" format="reference"/>
+        <attr name="shadowWidth" format="dimension"/>
+        <attr name="fadeEnabled" format="boolean"/>
+        <attr name="fadeDegree" format="float"/>
+        <attr name="selectorEnabled" format="boolean"/>
+        <attr name="selectorDrawable" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="PullToRefresh">
+
+        <!-- A drawable to use as the background of the Refreshable View -->
+        <attr name="ptrRefreshableViewBackground" format="reference|color"/>
+
+        <!-- A drawable to use as the background of the Header and Footer Loading Views -->
+        <attr name="ptrHeaderBackground" format="reference|color"/>
+
+        <!-- Text Color of the Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextColor" format="reference|color"/>
+
+        <!-- Text Color of the Header and Footer Loading Views Sub Header -->
+        <attr name="ptrHeaderSubTextColor" format="reference|color"/>
+
+        <!-- Mode of Pull-to-Refresh that should be used -->
+        <attr name="ptrMode">
+            <flag name="disabled" value="0x0"/>
+            <flag name="pullFromStart" value="0x1"/>
+            <flag name="pullFromEnd" value="0x2"/>
+            <flag name="both" value="0x3"/>
+            <flag name="manualOnly" value="0x4"/>
+
+            <!-- These last two are depreacted -->
+            <flag name="pullDownFromTop" value="0x1"/>
+            <flag name="pullUpFromBottom" value="0x2"/>
+        </attr>
+
+        <!-- Whether the Indicator overlay(s) should be used -->
+        <attr name="ptrShowIndicator" format="reference|boolean"/>
+
+        <!-- Drawable to use as Loading Indicator. Changes both Header and Footer. -->
+        <attr name="ptrDrawable" format="reference"/>
+
+        <!-- Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableStart" format="reference"/>
+
+        <!-- Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. -->
+        <attr name="ptrDrawableEnd" format="reference"/>
+
+        <!-- Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. -->
+        <attr name="ptrOverScroll" format="reference|boolean"/>
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views -->
+        <attr name="ptrHeaderTextAppearance" format="reference"/>
+
+        <!-- Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header -->
+        <attr name="ptrSubHeaderTextAppearance" format="reference"/>
+
+        <!-- Style of Animation should be used displayed when pulling. -->
+        <attr name="ptrAnimationStyle">
+            <flag name="rotate" value="0x0"/>
+            <flag name="flip" value="0x1"/>
+        </attr>
+
+        <!-- Whether the user can scroll while the View is Refreshing -->
+        <attr name="ptrScrollingWhileRefreshingEnabled" format="reference|boolean"/>
+
+        <!--
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be 
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        -->
+        <attr name="ptrListViewExtrasEnabled" format="reference|boolean"/>
+
+        <!--
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        -->
+        <attr name="ptrRotateDrawableWhilePulling" format="reference|boolean"/>
+
+        <!-- BELOW HERE ARE DEPRECEATED. DO NOT USE. -->
+        <attr name="ptrAdapterViewBackground" format="reference|color"/>
+        <attr name="ptrDrawableTop" format="reference"/>
+        <attr name="ptrDrawableBottom" format="reference"/>
+    </declare-styleable>
+
+    <!-- 左右滑动tab效果的 -->
+    <declare-styleable name="PagerSlidingTabStrip">
+        <attr name="indicatorColor" format="color"/>
+        <attr name="underlineColor" format="color"/>
+        <attr name="dividerColor" format="color"/>
+        <attr name="indicatorHeight" format="dimension"/>
+        <attr name="underlineHeight" format="dimension"/>
+        <attr name="dividerPadding_" format="dimension"/>
+        <attr name="tabPaddingLeftRight" format="dimension"/>
+        <attr name="scrollOffset" format="dimension"/>
+        <attr name="tabBackground2" format="reference"/>
+        <attr name="shouldExpand" format="boolean"/>
+        <attr name="textAllCaps_" format="boolean"/>
+        <attr name="showNewsTip" format="boolean"/>
+    </declare-styleable>
+
+    <attr name="borderRadius" format="dimension"/>
+    <attr name="type">
+        <enum name="circle" value="0"/>
+        <enum name="round" value="1"/>
+    </attr>
+    <attr name="src" format="reference"></attr>
+
+    <declare-styleable name="CustomImageView">
+        <attr name="borderRadius"/>
+        <attr name="type"/>
+        <attr name="src"/>
+    </declare-styleable>
+
+
+    <!-- 幻灯片viewflow -->
+    <declare-styleable name="ViewFlow">
+        <attr name="sidebuffer" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="CircleFlowIndicator">
+        <attr name="activeColor" format="color"/>
+        <attr name="inactiveColor" format="color"/>
+        <attr name="radius" format="dimension"/>
+        <attr name="centered" format="boolean"/>
+        <attr name="fadeOut" format="integer"/>
+        <attr name="inactiveType">
+            <flag name="stroke" value="0"/>
+            <flag name="fill" value="1"/>
+        </attr>
+        <attr name="activeType">
+            <flag name="stroke" value="0"/>
+            <flag name="fill" value="1"/>
+        </attr>
+        <attr name="circleSeparation" format="dimension"/>
+        <attr name="activeRadius" format="dimension"/>
+    </declare-styleable>
+
+    <!-- 下拉刷新需要部分 -->
+    <!-- <declare-styleable name="PullToRefresh">
+        <attr name="adapterViewBackground" format="reference|color" />
+        <attr name="headerBackground" format="reference|color" />
+        <attr name="headerTextColor" format="color" />
+        <attr name="mode">
+            <flag name="pullDownFromTop" value="0x1" />
+            <flag name="pullUpFromBottom" value="0x2" />
+            <flag name="both" value="0x3" />
+        </attr>
+    </declare-styleable> -->
+
+    <!-- 圆形头像的部份 -->
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension"/>
+        <attr name="border_color" format="color"/>
+    </declare-styleable>
+    <!--<declare-styleable name="Theme">-->
+    <!--<attr name="switchStyle" format="reference" />-->
+    <!--</declare-styleable>-->
+    <!--<declare-styleable name="Switch">-->
+
+    <!--&lt;!&ndash; Drawable to use when the switch is in the checked/"on" state. &ndash;&gt;-->
+    <!--<attr name="trackOn" format="reference" />-->
+    <!--&lt;!&ndash; Drawable to use when the switch is in the unchecked/"off" state. &ndash;&gt;-->
+    <!--<attr name="trackOff" format="reference" />-->
+    <!--&lt;!&ndash; Drawable to use as the "thumb" that switches back and forth. &ndash;&gt;-->
+    <!--<attr name="thumb" format="reference" />-->
+    <!--&lt;!&ndash; Drawable to use as the "track" that the switch thumb slides within. &ndash;&gt;-->
+    <!--<attr name="track" format="reference" />-->
+    <!--&lt;!&ndash; Text to use when the switch is in the checked/"on" state. &ndash;&gt;-->
+    <!--<attr name="textOn" format="reference" />-->
+    <!--&lt;!&ndash; Text to use when the switch is in the unchecked/"off" state. &ndash;&gt;-->
+    <!--<attr name="textOff" format="reference" />-->
+    <!--&lt;!&ndash; Amount of padding on either side of text within the switch thumb. &ndash;&gt;-->
+    <!--<attr name="thumbTextPadding" format="dimension" />-->
+    <!--&lt;!&ndash; TextAppearance style for text displayed on the switch thumb. &ndash;&gt;-->
+    <!--<attr name="switchTextAppearance" format="reference" />-->
+    <!--&lt;!&ndash; Minimum width for the switch component &ndash;&gt;-->
+    <!--<attr name="switchMinWidth" format="dimension" />-->
+    <!--&lt;!&ndash; Minimum space between the switch and caption text &ndash;&gt;-->
+    <!--<attr name="switchPadding" format="dimension" />-->
+    <!--</declare-styleable>-->
+    <!--<declare-styleable name="TextAppearance">-->
+
+    <!--&lt;!&ndash; Text color. &ndash;&gt;-->
+    <!--<attr name="android:textColor" />-->
+    <!--&lt;!&ndash; Size of the text. Recommended dimension type for text is "sp" for scaled-pixels (example: 15sp). &ndash;&gt;-->
+    <!--<attr name="android:textSize" />-->
+    <!--&lt;!&ndash; Style (bold, italic, bolditalic) for the text. &ndash;&gt;-->
+    <!--<attr name="android:textStyle" />-->
+    <!--&lt;!&ndash; Typeface (normal, sans, serif, monospace) for the text. &ndash;&gt;-->
+    <!--<attr name="android:typeface" />-->
+    <!--&lt;!&ndash; Color of the text selection highlight. &ndash;&gt;-->
+    <!--<attr name="android:textColorHighlight" />-->
+    <!--&lt;!&ndash; Color of the hint text. &ndash;&gt;-->
+    <!--<attr name="android:textColorHint" />-->
+    <!--&lt;!&ndash; Color of the links. &ndash;&gt;-->
+    <!--<attr name="android:textColorLink" />-->
+    <!--</declare-styleable>-->
+
+    <!--WheelView滚筒控件-->
+    <attr name="textColor" format="color|reference"/>
+    <attr name="selectedTextColor" format="color|reference"/>
+    <declare-styleable name="WheelView">
+        <attr name="textColor"/>
+        <attr name="selectedTextColor"/>
+    </declare-styleable>
+
+</resources>

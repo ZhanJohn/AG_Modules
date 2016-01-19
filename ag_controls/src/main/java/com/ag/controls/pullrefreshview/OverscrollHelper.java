@@ -18,8 +18,8 @@ package com.ag.controls.pullrefreshview;
 import android.util.Log;
 import android.view.View;
 
-import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.State;
+import com.ag.controls.pullrefreshview.PullToRefreshBase.Mode;
+import com.ag.controls.pullrefreshview.PullToRefreshBase.State;
 
 public final class OverscrollHelper {
 

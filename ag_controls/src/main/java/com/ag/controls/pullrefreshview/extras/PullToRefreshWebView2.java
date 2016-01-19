@@ -15,11 +15,12 @@
  *******************************************************************************/
 package com.ag.controls.pullrefreshview.extras;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.webkit.WebView;
 
-import com.handmark.pulltorefresh.library.PullToRefreshWebView;
+import com.ag.controls.pullrefreshview.PullToRefreshWebView;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -81,6 +82,7 @@ public class PullToRefreshWebView2 extends PullToRefreshWebView {
     private final AtomicBoolean mIsReadyForPullDown = new AtomicBoolean(false);
     private final AtomicBoolean mIsReadyForPullUp = new AtomicBoolean(false);
 
+    @SuppressLint("JavascriptInterface")
     @Override
     protected WebView createRefreshableView(Context context, AttributeSet attrs) {
         WebView webView = super.createRefreshableView(context, attrs);

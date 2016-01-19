@@ -29,8 +29,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.zq.controls.util.ResourceUtil;
+import com.ag.controls.common.util.ResourceUtil;
+import com.ag.controls.pullrefreshview.PullToRefreshBase;
+
 
 public class IndicatorLayout extends FrameLayout implements AnimationListener {
 

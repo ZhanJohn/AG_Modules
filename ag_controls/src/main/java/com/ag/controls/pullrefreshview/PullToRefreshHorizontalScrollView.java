@@ -23,7 +23,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 
-import com.zq.controls.util.ResourceUtil;
+import com.ag.controls.common.util.ResourceUtil;
+
 
 public class PullToRefreshHorizontalScrollView extends
         PullToRefreshBase<HorizontalScrollView> {

@@ -3,9 +3,10 @@ package com.ag.controls.pullrefreshview;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
-import com.handmark.pulltorefresh.library.internal.LoadingLayout;
+import com.ag.controls.pullrefreshview.internal.LoadingLayout;
 
 import java.util.HashSet;
+
 
 public class LoadingLayoutProxy implements ILoadingLayout {
 

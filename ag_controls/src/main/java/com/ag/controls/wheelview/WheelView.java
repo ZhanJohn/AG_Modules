@@ -32,12 +32,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 
-import com.zq.controls.util.ResourceUtil;
+import com.ag.controls.common.util.ResourceUtil;
+import com.ag.controls.wheelview.adapters.WheelViewAdapter;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import kankan.wheel.widget.adapters.WheelViewAdapter;
 
 /**
  * Numeric wheel view.
@@ -756,7 +756,7 @@ public class WheelView extends View {
     /**
      * Scroll the wheel
      *
-     * @param itemsToSkip items to scroll
+     * @param itemsToScroll items to scroll
      * @param time        scrolling duration
      */
     public void scroll(int itemsToScroll, int time) {
