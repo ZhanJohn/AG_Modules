@@ -1,3 +1,28 @@
 <resources>
-    <string name="app_name">AG_Common</string>
+    <string name="dialog_title_system_msg">系统消息</string>
+    <string name="str_search_toolip">请输入关键字</string>
+    <string name="app_topbar">{\"interfaceVersion\": \"1.0\",\"isOpenNewWnd\": \"1\",\"url\":\"{0}\",
+        \"wndCfg\":{\"navType\":\"\",
+   \"controller\":[{\"type\": \"button\",\"text\":\"\",\"textColor\":\"\",\"textFont\":\"\",\"rect\":{\"isCenter\": \"0\",\"marginTop\": \"0\",\"marginLeft\": \"0.1\",\"marginRight\": \"0\",\"height\": \"49\",\"weight\": \"49\"},\"bgImg\":{\"normal\": \"{11}\",\"highLight\": \"\"},\"action\":{\"funName\":\"{12}\",\"param\":\"{13}\"}},
+     {\"type\": \"label\",\"text\":\"{1}\",\"textColor\":\"{TitleColor}\",\"textFont\":\"20\",\"rect\":{\"isCenter\": \"1\",\"marginTop\": \"0\",\"marginLeft\": \"0\",\"marginRight\": \"0\",\"height\": \"\",\"weight\": \"\"},\"bgImg\":{\"normal\": \"\",\"highLight\": \"\"},\"action\":{\"funName\":\"\",\"param\":\"\"}},
+        {\"type\": \"button\",\"text\":\"\",\"textColor\":\"\",\"textFont\":\"\",\"rect\":{\"isCenter\": \"0\",\"marginTop\": \"0\",\"marginLeft\": \"0\",\"marginRight\": \"0.1\",\"height\": \"49\",\"weight\": \"49\"},\"bgImg\":{\"normal\": \"{21}\",\"highLight\": \"\"},\"action\":{\"funName\":\"{22}\",\"param\":\"{23}\"}}
+   ]}}</string>
+
+    <string name="app_topbar_backbutton">
+        {\"type\": \"button\",\"text\":\"\",\"textColor\":\"\",\"textFont\":\"\",\"rect\":{\"isCenter\": \"0\",\"marginTop\": \"0\",\"marginLeft\": \"0.1\",\"marginRight\": \"0\",\"height\": \"49\",\"weight\": \"49\"},\"bgImg\":{\"normal\": \"{11}\",\"highLight\": \"\"},\"action\":{\"funName\":\"{12}\",\"param\":\"{13}\"}}
+    </string>
+
+	<string name="app_topbar2">{\"interfaceVersion\": \"1.0\",\"isOpenNewWnd\": \"1\",\"url\":\"http://www.baidu.com\",
+        \"wndCfg\":{\"navType\":\"\",
+   \"controller\":[{\"type\": \"button\",\"text\":\"\",\"textColor\":\"\",\"textFont\":\"\",\"rect\":{\"isCenter\": \"0\",\"marginTop\": \"0\",\"marginLeft\": \"0.1\",\"marginRight\": \"0\",\"height\": \"49\",\"weight\": \"49\"},\"bgImg\":{\"normal\": \"icon_fanhui\",\"highLight\": \"\"},\"action\":{\"xx\":\"\",\"xx\":\"\"}},
+     {\"type\": \"label\",\"text\":\"test\",\"textColor\":\"#000000\",\"textFont\":\"20\",\"rect\":{\"isCenter\": \"1\",\"marginTop\": \"0\",\"marginLeft\": \"0\",\"marginRight\": \"0\",\"height\": \"\",\"weight\": \"\"},\"bgImg\":{\"normal\": \"\",\"highLight\": \"\"},\"action\":{\"xx\":\"\",\"xx\":\"\"}},
+     {\"type\": \"button\",\"text\":\"\",\"textColor\":\"\",\"textFont\":\"\",\"rect\":{\"isCenter\": \"0\",\"marginTop\": \"0\",\"marginLeft\": \"0\",\"marginRight\": \"0.1\",\"height\": \"49\",\"weight\": \"49\"},\"bgImg\":{\"normal\": \"icon_share_android_40\",\"highLight\": \"\"},\"action\":{\"xx\":\"\",\"xx\":\"\"}},
+     {\"type\": \"button\",\"text\":\"\",\"textColor\":\"\",\"textFont\":\"\",\"rect\":{\"isCenter\": \"0\",\"marginTop\": \"0\",\"marginLeft\": \"0\",\"marginRight\": \"49\",\"height\": \"49\",\"weight\": \"49\"},\"bgImg\":{\"normal\": \"icon_setting\",\"highLight\": \"\"},\"action\":{\"xx\":\"\",\"xx\":\"\"}}
+   ]}}</string>
+
+	<string name="app_topbar_search">{\"interfaceVersion\": \"1.0\",\"isOpenNewWnd\": \"1\",\"url\":\"{0}\",
+        \"wndCfg\":{\"navType\":\"\",
+   \"controller\":[{\"type\": \"button\",\"text\":\"\",\"textColor\":\"\",\"textFont\":\"\",\"rect\":{\"isCenter\": \"0\",\"marginTop\": \"0\",\"marginLeft\": \"0.1\",\"marginRight\": \"0\",\"height\": \"49\",\"weight\": \"49\"},\"bgImg\":{\"normal\": \"icon_fanhui\",\"highLight\": \"\"},\"action\":{\"funName\":\"back\",\"param\":\"\"}},
+     {\"type\": \"searchbar\",\"text\":\"请输入关键字\",\"textColor\":\"#cccccc\",\"textFont\":\"18\",\"rect\":{\"isCenter\": \"0\",\"marginTop\": \"0\",\"marginLeft\": \"0\",\"marginRight\": \"0\",\"height\": \"\",\"weight\": \"\"},\"bgImg\":{\"normal\": \"\",\"highLight\": \"\"},\"action\":{\"funName\":\"\",\"param\":\"\"}}
+   ]}}</string>
 </resources>

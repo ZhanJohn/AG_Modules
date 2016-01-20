@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <!-- 蓝色按钮 -->
+    <color name="button_bg_blue">#00b0f6</color>
+    <color name="ccc">#CCCCCC</color>
+    <!-- 蓝色按钮点击颜色-->
+    <color name="button_pressed_bg_blue">#009cda</color>
+    
+    <!-- 新版易惠卡颜色值 -->
+    <!-- 金额无次数 -->
+    <color name="preferential_blue">#00beff</color>
+    <!-- 金额有次数 -->
+    <color name="preferential_orange">#ff8560</color>
+    <!-- 折扣无次数 -->
+    <color name="preferential_green">#7dcb5d</color>
+    <!-- 折扣有次数 -->
+    <color name="preferential_pink">#fa6469</color>
+    <!-- 次数 -->
+    <color name="preferential_purple">#cc6dff</color>
+    <!-- 列表背景 -->
+    <color name="preferential_gray">#fbfbfb</color>
+    
+</resources>

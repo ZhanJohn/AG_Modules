@@ -1,14 +1,13 @@
 package com.ag.common.tool;
 
 import android.content.Context;
-import android.text.ClipboardManager;
+import android.content.ClipboardManager;
 
 public class Clipboard {
 	
 	/**
 	 * 实现文本复制功能
 	 */
-	@SuppressWarnings("deprecation")
 	public static void copy(String str, Context context){
 		// 得到剪贴板管理器
 		ClipboardManager cmb = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
