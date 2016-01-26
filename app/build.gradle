@@ -31,4 +31,6 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile project(':ag_umeng_push')
     compile project(':ag_player')
+    compile project(':ag_controls')
+    compile project(':ag_common')
 }

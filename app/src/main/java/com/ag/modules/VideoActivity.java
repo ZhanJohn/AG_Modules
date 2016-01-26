@@ -32,7 +32,7 @@ public class VideoActivity extends Activity {
             Toast.makeText(getApplicationContext(),"player is null!!!",Toast.LENGTH_LONG).show();
             return;
         }
-        List<TitleMenu> videoTitleMenus=new ArrayList<TitleMenu>();
+        List<TitleMenu> videoTitleMenus=new ArrayList<>();
         TitleMenu icon1=new TitleMenu();
         icon1.iconId=R.mipmap.ic_share;
         icon1.action=new PlayerActionInterface(){
@@ -49,7 +49,7 @@ public class VideoActivity extends Activity {
         icon3.iconId=R.mipmap.ic_perm_identity;
         videoTitleMenus.add(icon3);
         player.setMenu(videoTitleMenus);
-        List<VideoInfo> videos=new ArrayList<VideoInfo>();
+        List<VideoInfo> videos=new ArrayList<>();
         VideoInfo v1=new VideoInfo();
         v1.description="111";
         v1.type=VideoInfo.VideoType.MP4;
