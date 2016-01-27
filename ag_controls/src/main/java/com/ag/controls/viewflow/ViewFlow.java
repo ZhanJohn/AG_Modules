@@ -1,4 +1,4 @@
-package com.ag.controls.customview.viewflow;
+package com.ag.controls.viewflow;
 
 import android.content.Context;
 import android.content.res.Configuration;

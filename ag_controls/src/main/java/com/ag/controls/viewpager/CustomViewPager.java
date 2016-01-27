@@ -1,4 +1,4 @@
-package com.ag.controls.customview.viewpager;
+package com.ag.controls.viewpager;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

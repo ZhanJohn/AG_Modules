@@ -1,4 +1,4 @@
-package com.ag.controls.customview.viewpager;
+package com.ag.controls.viewpager;
 
 /**
  * Created by zq on 2015/8/25.
