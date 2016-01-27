@@ -1,4 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ag.common">
 
+    <application>
+
+        <!-- AutoLayout设置：design_width为设计稿的宽度，design_height为设计稿的高度，可在项目中自行修改 -->
+        <meta-data
+            android:name="design_width"
+            android:value="768" />
+        <meta-data
+            android:name="design_height"
+            android:value="1280" />
+
+    </application>
+
 </manifest>

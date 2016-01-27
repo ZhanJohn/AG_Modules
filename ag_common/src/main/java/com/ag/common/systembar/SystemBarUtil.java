@@ -80,5 +80,19 @@ public class SystemBarUtil {
 //			}
 //		}
 //	}
+
+	/**
+	 * 设置沉浸栏，Activity设置之前，Layout布局要设置Style="@style/immersion_status"，系统的沉浸栏颜色可以通过Layout的background修改
+	 * Android 4.4版本以上才有效
+	 * @param context
+     */
+	public static void setImmesionStatus(Activity context){
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			// 透明状态栏
+			context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+			// 透明导航栏
+			context.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+		}
+	}
 	
 }
