@@ -1,6 +1,8 @@
 package com.ag.common.dialog;
 
-
+/**
+ * CommonDialog return choice's result
+ */
 public interface ICommonDialogResultListener {
-	public void returnDialogResult(DialogEntity obj);
+	void returnDialogResult(DialogEntity obj);
 }

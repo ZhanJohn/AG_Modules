@@ -16,7 +16,7 @@ import com.ag.common.createview.CustomerBarConfig;
 import com.ag.common.createview.CustomerBarController;
 import com.ag.common.createview.CustomerBarResult;
 import com.ag.common.createview.ISearchListener;
-import com.ag.common.dialog.ZQDialogUtil;
+import com.ag.common.dialog.AGDialogUtil;
 import com.ag.common.js.AGChromeClient;
 import com.ag.common.js.bean.PopLevel;
 import com.ag.common.js.enums.JSMethodEnum;
@@ -201,7 +201,7 @@ public abstract class BaseWebViewActivity extends Activity {
 
     public void showPayPage(){
         //弹出支付窗口
-        ZQDialogUtil.ShowDialog(this, "是否确定放弃付款", "确定", "取消", new IAlertDialogResult() {
+        AGDialogUtil.ShowDialog(this, "是否确定放弃付款", "确定", "取消", new IAlertDialogResult() {
             @Override
             public void ResultOK() {
                 turnOrderPage();

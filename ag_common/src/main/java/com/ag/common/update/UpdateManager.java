@@ -28,8 +28,6 @@ import java.util.HashMap;
 
 /**
  * 程序更新管理器
- * @author JohnZhan
- * 2013-11-28
  */
 public class UpdateManager {
 	/* 下载中 */  
@@ -54,8 +52,8 @@ public class UpdateManager {
     private ProgressBar mProgress;  
     public MyAlertDialog mDownloadDialog;
     
-    private String packageName="com.zqeasy.activity";
-    private String versionUrl="http://www.goetui.com/APP/version.xml";
+    private String packageName="";
+    private String versionUrl="";
     public String downApkUrl="";//下载的url
     public String newVersionName="";//新版本的名称
     public String versionExplain="";//更新说明
@@ -224,55 +222,13 @@ public class UpdateManager {
      * 显示软件更新对话框 
      */  
     public void showNoticeDialog()  
-    {  
-    	/*int info=R.string.soft_update_info;
-    	int btn = R.string.soft_update_updatebtn;
-    	int later = R.string.soft_update_later;
-    	if(IsMustUpdate){
-    		info = R.string.soft_update_info2;
-    		btn = R.string.soft_update_updatebtn2;
-    		later = R.string.soft_update_later2;
-    	}
-        // 构造对话框  
-        AlertDialog.Builder builder = new Builder(mContext);  
-        builder.setTitle(R.string.soft_update_title);  
-        builder.setMessage(info);
-        builder.setCancelable(!IsMustUpdate);//新加
-        // 更新  
-        builder.setPositiveButton(btn, new OnClickListener()  
-        {  
-            @Override  
-            public void onClick(DialogInterface dialog, int which)  
-            {  
-                dialog.dismiss();  
-                // 显示下载对话框  
-                showDownloadDialog();  
-            }  
-        });  
-        // 稍后更新  
-        builder.setNegativeButton(later, new OnClickListener()  
-        {  
-            @Override  
-            public void onClick(DialogInterface dialog, int which)  
-            {  
-                dialog.dismiss();
-                if(IsMustUpdate){
-                	CommonUtil.clearMemory();
-                }
-            }  
-        });  
-        Dialog noticeDialog = builder.create();  
-        noticeDialog.show();  */
-    	
+    {
     	final UpdateDialog builder = new UpdateDialog(mContext);  
         //builder.setTitle(R.string.soft_update_title);
         //builder.setMessage("检测到新版本");
         builder.setCancelable(false);
         builder.setUpdateContent(versionExplain);
-    	
-        /*final MyAlertDialog builder = new MyAlertDialog(mContext);
-        builder.setMessage(IsMustUpdate?R.string.soft_update_info2:R.string.soft_update_info);
-        builder.setCancelable(false);*/
+
         builder.setPositiveButton("更新", new View.OnClickListener()  
         {
 			@Override
@@ -326,50 +282,24 @@ public class UpdateManager {
   
     /** 
      * 显示软件下载对话框 
-     */  
-    public void showDownloadDialog()  
-    {  
-        /*// 构造软件下载对话框  
-        AlertDialog.Builder builder = new Builder(mContext);  
-        builder.setTitle(R.string.soft_updating);  
-        // 给下载对话框增加进度条  
-        final LayoutInflater inflater = LayoutInflater.from(mContext);  
-        View v = inflater.inflate(R.layout.softupdate_progress, null);  
-        mProgress = (ProgressBar) v.findViewById(R.id.update_progress);  
-        builder.setView(v);  
-        // 取消更新  
-        builder.setNegativeButton(R.string.soft_update_cancel, new OnClickListener()  
-        {  
-            @Override  
-            public void onClick(DialogInterface dialog, int which)  
-            {  
-                dialog.dismiss();  
-                // 设置取消状态  
-                cancelUpdate = true;  
-            }  
-        });  
-        mDownloadDialog = builder.create();  
-        mDownloadDialog.show();  
-        // 现在文件  
-        downloadApk(); */
-    	
-    	mDownloadDialog = new MyAlertDialog(mContext);
+     */
+    public void showDownloadDialog() {
+        mDownloadDialog = new MyAlertDialog(mContext);
         mProgress = mDownloadDialog.getProgressBar();
         mDownloadDialog.showProgressBar();
         mDownloadDialog.setCancelable(false);
 //        mDownloadDialog.setNegativeButton("取消", cancelListener);
-        mDownloadDialog.setNegativeButton("取消", new View.OnClickListener()  
-        {
-			@Override
-			public void onClick(View v) {
-				mDownloadDialog.dismiss();
+        mDownloadDialog.setNegativeButton("取消", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDownloadDialog.dismiss();
                 cancelUpdate = true;
-                if(IsMustUpdate){
-                	CommonUtil.clearMemory();
-                	return;
+                if (IsMustUpdate) {
+                    CommonUtil.clearMemory();
+                    return;
                 }
-			}
-        }); 
+            }
+        });
         downloadApk();
     }  
   

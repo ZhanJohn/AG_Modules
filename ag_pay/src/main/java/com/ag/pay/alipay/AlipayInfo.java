@@ -8,11 +8,8 @@ public class AlipayInfo {
 	private String partner;
 	private String publickey;
 	private String privatekey;
-	private String key;
 
 	private Context context;
-	private int userid;
-	private String payid;
 	private String payCode;
 	private String showTitle;
 	private String body;
@@ -35,28 +32,6 @@ public class AlipayInfo {
 	}
 	public void setContext(Context context) {
 		this.context = context;
-	}
-
-	/**
-	 * 用户ID
-	 * @return
-	 */
-	public int getUserid() {
-		return userid;
-	}
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
-
-	/**
-	 * 支付记录ID
-	 * @return
-	 */
-	public String getPayid() {
-		return payid;
-	}
-	public void setPayid(String payid) {
-		this.payid = payid;
 	}
 
 	/**
@@ -134,12 +109,6 @@ public class AlipayInfo {
 	}
 	public void setPrivatekey(String privatekey) {
 		this.privatekey = privatekey;
-	}
-	public String getKey() {
-		return key;
-	}
-	public void setKey(String key) {
-		this.key = key;
 	}
 
 	/**

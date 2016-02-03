@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.ag.common.config.ZQSharedPreferences;
+import com.ag.common.config.AGSharedPreferences;
 import com.ag.common.js.AGChromeClient;
 import com.ag.common.js.AndroidJs;
 import com.ag.common.other.AGActivity;
@@ -53,7 +53,7 @@ public class AGWebViewControl {
 	public AGChromeClient chromeClient;//方便处理upload file的回调
 
 	private long timeout = 30*1000;
-	private static final String App_Request_Header_Key="zqapp";
+	private static final String App_Request_Header_Key="app";
 	private static final String Error_Url="file:///android_asset/error.htm";
 	private static String AuthLogin_Url="";
 	private String Index_Url="";
@@ -123,7 +123,7 @@ public class AGWebViewControl {
 //		settings.setGeolocationEnabled(controlParams.ismGeolocationPermission());
 //		settings.setJavaScriptCanOpenWindowsAutomatically(true);
 		if(isAddRequestHeader())
-			settings.setUserAgentString(settings.getUserAgentString()+" ZQAPP/2");
+			settings.setUserAgentString(settings.getUserAgentString()+" APP/2");
 		Log.d(TAG,"userAgent==" + webView.getSettings().getUserAgentString());
 
 		//初始化缓存配置
@@ -228,8 +228,8 @@ public class AGWebViewControl {
 						+ ";start=" + startUrl + ";redirect=" + isRedirect);
 
 				//首次加载本地资源，并且网络可用，请求线上网站
-				if(NetworkStateUtils.isNetworkConnected(context) && ZQSharedPreferences.isIndexHtmlEnter(context)){
-					ZQSharedPreferences.setFirstIndexHtmlEnter(context);
+				if(NetworkStateUtils.isNetworkConnected(context) && AGSharedPreferences.isIndexHtmlEnter(context)){
+					AGSharedPreferences.setFirstIndexHtmlEnter(context);
 					loadWebViewUrl(Index_Url);
 					return;
 				}
@@ -331,13 +331,13 @@ public class AGWebViewControl {
 		//首次先加载本地html
 		String tmpUrl=controlParams.getLoadUrl();
 
-		if(ZQSharedPreferences.isIndexHtmlEnter(context)){
+		if(AGSharedPreferences.isIndexHtmlEnter(context)){
 			if(!TextUtils.isEmpty(Index_Html_Url)){
 				//首次加载并且本地链接不为空，则先加载本地网页
 				webView.loadUrl(Index_Html_Url);
 			}else{
 				//首次加载并且本地链接为空，则直接读取线上网页
-				ZQSharedPreferences.setFirstIndexHtmlEnter(context);
+				AGSharedPreferences.setFirstIndexHtmlEnter(context);
 			}
 		}
 		//如果需要读取缓存，则从缓存中读取真实的加载链接，即重定向最后的链接

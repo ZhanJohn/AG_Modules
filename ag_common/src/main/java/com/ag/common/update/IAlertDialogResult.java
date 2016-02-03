@@ -4,10 +4,10 @@ public interface IAlertDialogResult {
 	/**
 	 * 确定
 	 */
-	public void ResultOK();
+	void resultOK();
 	
 	/**
 	 * 取消
 	 */
-	public void ResultCancel();
+	void resultCancel();
 }

@@ -15,7 +15,7 @@ import com.ag.common.other.NetworkStateUtils;
 import com.ag.common.update.IAlertDialogResult;
 import com.ag.common.update.MyAlertDialog;
 
-public class ZQDialogUtil {
+public class AGDialogUtil {
 
 	public static void ShowDialog(Activity activity, String title, String ok,
 			String cancel, final IAlertDialogResult iDialogResult) {
@@ -74,7 +74,7 @@ public class ZQDialogUtil {
 							public void onClick(View v) {
 								dialog.dismiss();
 								if (iDialogResult != null)
-									iDialogResult.ResultCancel();
+									iDialogResult.resultCancel();
 							}
 						});
 			} else {
@@ -84,7 +84,7 @@ public class ZQDialogUtil {
 					public void onClick(View v) {
 						dialog.dismiss();
 						if (iDialogResult != null)
-							iDialogResult.ResultCancel();
+							iDialogResult.resultCancel();
 					}
 				});
 			}
@@ -98,7 +98,7 @@ public class ZQDialogUtil {
 							public void onClick(View v) {
 								dialog.dismiss();
 								if (iDialogResult != null)
-									iDialogResult.ResultOK();
+									iDialogResult.resultOK();
 							}
 						});
 			} else {
@@ -108,7 +108,7 @@ public class ZQDialogUtil {
 					public void onClick(View v) {
 						dialog.dismiss();
 						if (iDialogResult != null)
-							iDialogResult.ResultOK();
+							iDialogResult.resultOK();
 					}
 				});
 			}
@@ -129,7 +129,7 @@ public class ZQDialogUtil {
 				public void onClick(View v) {
 					dialog.dismiss();
 					if (iDialogResult != null)
-						iDialogResult.ResultCancel();
+						iDialogResult.resultCancel();
 				}
 			});
 		}
@@ -140,7 +140,7 @@ public class ZQDialogUtil {
 				public void onClick(View v) {
 					dialog.dismiss();
 					if (iDialogResult != null)
-						iDialogResult.ResultOK();
+						iDialogResult.resultOK();
 				}
 			});
 		}

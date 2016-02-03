@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 /**
  *
  */
-public class ZQSharedPreferences {
+public class AGSharedPreferences {
 
     /**
      * 根据KEY清除数据
@@ -46,7 +46,7 @@ public class ZQSharedPreferences {
     public static boolean sharePreferencesExists(String name,int mode, Context context){
         SharedPreferences preferences = context.getSharedPreferences(name,mode);
         String s = preferences.getString(name, null);
-        Log.d("ZQSharedPreferences","key值为：" + s);
+        Log.d("AGSharedPreferences","key值为：" + s);
         return s==null?false:true;
     }
 
@@ -72,7 +72,7 @@ public class ZQSharedPreferences {
 
         try {
             String result=BTS.decodeBTS(s);
-            Log.d("ZQSharedPreferences","GetObjectFromJson=="+result);
+            Log.d("AGSharedPreferences","GetObjectFromJson=="+result);
             return (new Gson()).fromJson(result, cls);
         } catch (Exception e) {
             e.printStackTrace();
