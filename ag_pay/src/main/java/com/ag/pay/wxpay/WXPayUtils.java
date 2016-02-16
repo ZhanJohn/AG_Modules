@@ -19,7 +19,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
 public class WXPayUtils {
 
     private static String TAG="WXPayUtils";
-    private static WXPayUtils wxPayUtils=new WXPayUtils();
+    private volatile static WXPayUtils instance;
     private Context mContext;
     private IWXAPI mIWXAPI;
     private IWXPayResult iwxPayResult;
@@ -27,7 +27,14 @@ public class WXPayUtils {
     private WXPayUtils(){}
 
     public static WXPayUtils getInstance(){
-        return wxPayUtils;
+        if(instance==null){
+            synchronized (WXPayUtils.class){
+                if(instance==null){
+                    instance=new WXPayUtils();
+                }
+            }
+        }
+        return instance;
     }
 
     /**

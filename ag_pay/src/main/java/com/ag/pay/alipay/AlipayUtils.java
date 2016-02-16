@@ -23,9 +23,16 @@ import java.util.Map;
 public class AlipayUtils {
 
 	private Context mContext=null;
-	private static AlipayUtils alipayUtils=new AlipayUtils();
+	private volatile static AlipayUtils instance;
 	public static AlipayUtils getInstance(){
-		return alipayUtils;
+		if(instance==null){
+			synchronized (AlipayUtils.class){
+				if(instance==null){
+					instance=new AlipayUtils();
+				}
+			}
+		}
+		return instance;
 	}
 
 	private IAliPayResult iAliPayResult;

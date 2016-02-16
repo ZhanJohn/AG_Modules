@@ -2,11 +2,13 @@ package com.ag.share.customer;
 
 import android.view.View.OnClickListener;
 
+import java.io.Serializable;
+
 /**
  * 自定义平台
  *
  */
-public class CustomerPlatform {
+public class CustomerPlatform implements Serializable{
 	private String customerLogo;
 	private String customerName;
 	private OnClickListener customerListener;

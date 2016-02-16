@@ -35,7 +35,7 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 public class AGPush {
 
     private final String TAG = this.getClass().getSimpleName();
-    private static AGPush zqPush;
+    private volatile static AGPush instance;
     public IPushReceiver iPushReceiver;
     private AGPushParam pushParam;
     private String pushUrl = "";
@@ -47,9 +47,14 @@ public class AGPush {
     }
 
     public static AGPush getInstance() {
-        if (zqPush == null)
-            zqPush = new AGPush();
-        return zqPush;
+        if (instance == null){
+            synchronized (AGPush.class){
+                if(instance==null){
+                    instance=new AGPush();
+                }
+            }
+        }
+        return instance;
     }
 
     public void setiPushReceiver(IPushReceiver iPushReceiver) {
