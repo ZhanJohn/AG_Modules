@@ -1,20 +1,13 @@
 package com.ag.pay.wxpay;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 
-import com.tencent.mm.sdk.constants.ConstantsAPI;
-import com.tencent.mm.sdk.modelbase.BaseReq;
-import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
-import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 /**
  * 微信支付
- * Created by ZXR on 2016/1/13.
  */
 public class WXPayUtils {
 
@@ -40,68 +33,67 @@ public class WXPayUtils {
     /**
      * 微信支付初始化
      * @param context
-     * @param intent 处理Handler回调，传getIntent()即可
      * @param wxAppId 微信开放平台注册的AppID
      * @param iwxPayResult 微信支付结果接口
      */
-    public void initialize(Context context, Intent intent, String wxAppId,IWXPayResult iwxPayResult){
+    public void initialize(Context context, String wxAppId,IWXPayResult iwxPayResult){
         this.mContext=context;
         this.iwxPayResult=iwxPayResult;
         mIWXAPI= WXAPIFactory.createWXAPI(context,wxAppId);
         mIWXAPI.registerApp(wxAppId);
-        mIWXAPI.handleIntent(intent,iwxapiEventHandler);
+//        mIWXAPI.handleIntent(intent,iwxapiEventHandler);
     }
 
-    private IWXAPIEventHandler iwxapiEventHandler=new IWXAPIEventHandler() {
-
-        /**
-         * 微信发送请求到第三方应用时，会回调到该方法
-         * @param baseReq
-         */
-        @Override
-        public void onReq(BaseReq baseReq) {
-            switch (baseReq.getType()) {
-                case ConstantsAPI.COMMAND_GETMESSAGE_FROM_WX:
-//                    goToGetMsg();
-                    break;
-                case ConstantsAPI.COMMAND_SHOWMESSAGE_FROM_WX:
-//                    goToShowMsg((ShowMessageFromWX.Req) req);
-                    break;
-                case ConstantsAPI.COMMAND_LAUNCH_BY_WX:
-//                    Toast.makeText(this, R.string.launch_from_wx, Toast.LENGTH_SHORT).show();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        /**
-         * 第三方应用发送到微信的请求处理后的响应结果，会回调到该方法
-         * @param baseResp
-         */
-        @Override
-        public void onResp(BaseResp baseResp) {
-            if(iwxPayResult==null)
-                return;
-
-            if(baseResp.getType() != ConstantsAPI.COMMAND_PAY_BY_WX)
-                return;
-
-            switch (baseResp.errCode) {
-                case BaseResp.ErrCode.ERR_OK:
-                    iwxPayResult.paySuccess();
-                    break;
-                case BaseResp.ErrCode.ERR_USER_CANCEL:
-                    iwxPayResult.payCancel();
-                    break;
-                default:
-                    String errorMsg=String.format("errCode:%d;errStr::%s",baseResp.errCode,baseResp.errStr);
-                    Log.d(TAG,errorMsg);
-                    iwxPayResult.payError(errorMsg);
-                    break;
-            }
-        }
-    };
+//    private IWXAPIEventHandler iwxapiEventHandler=new IWXAPIEventHandler() {
+//
+//        /**
+//         * 微信发送请求到第三方应用时，会回调到该方法
+//         * @param baseReq
+//         */
+//        @Override
+//        public void onReq(BaseReq baseReq) {
+//            switch (baseReq.getType()) {
+//                case ConstantsAPI.COMMAND_GETMESSAGE_FROM_WX:
+////                    goToGetMsg();
+//                    break;
+//                case ConstantsAPI.COMMAND_SHOWMESSAGE_FROM_WX:
+////                    goToShowMsg((ShowMessageFromWX.Req) req);
+//                    break;
+//                case ConstantsAPI.COMMAND_LAUNCH_BY_WX:
+////                    Toast.makeText(this, R.string.launch_from_wx, Toast.LENGTH_SHORT).show();
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//
+//        /**
+//         * 第三方应用发送到微信的请求处理后的响应结果，会回调到该方法
+//         * @param baseResp
+//         */
+//        @Override
+//        public void onResp(BaseResp baseResp) {
+//            if(iwxPayResult==null)
+//                return;
+//
+//            if(baseResp.getType() != ConstantsAPI.COMMAND_PAY_BY_WX)
+//                return;
+//
+//            switch (baseResp.errCode) {
+//                case BaseResp.ErrCode.ERR_OK:
+//                    iwxPayResult.paySuccess();
+//                    break;
+//                case BaseResp.ErrCode.ERR_USER_CANCEL:
+//                    iwxPayResult.payCancel();
+//                    break;
+//                default:
+//                    String errorMsg=String.format("errCode:%d;errStr::%s",baseResp.errCode,baseResp.errStr);
+//                    Log.d(TAG,errorMsg);
+//                    iwxPayResult.payError(errorMsg);
+//                    break;
+//            }
+//        }
+//    };
 
     /**
      * 解绑微信
@@ -134,6 +126,25 @@ public class WXPayUtils {
             e.printStackTrace();
             iwxPayResult.payError(e.getMessage());
         }
+    }
+
+    public void paySuccess(){
+        if(iwxPayResult==null)
+            return;
+        iwxPayResult.paySuccess();
+    }
+
+    public void payError(String errorMsg){
+        if(iwxPayResult==null)
+            return;
+
+        iwxPayResult.payError(errorMsg);
+    }
+
+    public void payCancel(){
+        if(iwxPayResult==null)
+            return;
+        iwxPayResult.payCancel();
     }
 
     /**

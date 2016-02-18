@@ -1,9 +1,11 @@
 package com.ag.pay.wxpay;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 
 /**
- * Created by ZXR on 2016/1/13.
+ * 微信支付参数
  */
 public class WXPayParams implements Serializable {
 
@@ -83,6 +85,8 @@ public class WXPayParams implements Serializable {
     }
 
     public String getPackageValue() {
+        if(TextUtils.isEmpty(packageValue))
+            return "Sign=WXPay";
         return packageValue;
     }
 
