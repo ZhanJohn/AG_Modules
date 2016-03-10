@@ -387,7 +387,7 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 	 * @param scaleFactor amount by which thumbnail was scaled
 	 * @param barcode   A greyscale bitmap of the camera data which was decoded.
 	 */
-	private void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
+	public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
 		inactivityTimer.onActivity();
 		lastResult = rawResult;
 		handleDecode(rawResult.getText());
