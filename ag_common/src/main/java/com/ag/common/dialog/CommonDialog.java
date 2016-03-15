@@ -91,7 +91,6 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
 		position = 0;
 	}
 
-
 	@Override
 	public void onClick(View v) {
 		int id = v.getId();

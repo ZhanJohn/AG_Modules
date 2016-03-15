@@ -1,7 +1,9 @@
 package com.ag.common.other;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 public class KeyboardUtils {
@@ -34,4 +36,16 @@ public class KeyboardUtils {
 		InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(view.getWindowToken() , 0); 
 	}
+
+	/**
+	 * 隐藏软键盘
+	 */
+	public static void hideKeyboard(Activity context) {
+		InputMethodManager manager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+		if (context.getWindow().getAttributes().softInputMode != WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN) {
+			if (context.getCurrentFocus() != null)
+				manager.hideSoftInputFromWindow(context.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+		}
+	}
+
 }
