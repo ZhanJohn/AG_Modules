@@ -35,6 +35,8 @@ import static com.ag.controls.common.adapter.BaseAdapterHelper.get;
 public abstract class QuickAdapter<T> extends
         BaseQuickAdapter<T, BaseAdapterHelper> {
 
+    private IAutoView iAutoView;
+
     /**
      * Create a QuickAdapter.
      *
@@ -45,6 +47,15 @@ public abstract class QuickAdapter<T> extends
      */
     public QuickAdapter(Context context, int layoutResId) {
         super(context, layoutResId);
+    }
+
+    public QuickAdapter(Context context, int layoutResId,IAutoView iAutoView) {
+        super(context, layoutResId);
+        this.iAutoView=iAutoView;
+    }
+
+    public void setiAutoView(IAutoView iAutoView){
+        this.iAutoView=iAutoView;
     }
 
     /**
@@ -78,8 +89,12 @@ public abstract class QuickAdapter<T> extends
                     mMultiItemSupport.getLayoutId(position, data.get(position)),
                     position);
         } else {
-            return get(context, convertView, parent, layoutResId, position);
+            return get(context, convertView, parent, layoutResId, position,iAutoView);
         }
+    }
+
+    public interface IAutoView{
+        void onAutoView(View convertView);
     }
 
 }

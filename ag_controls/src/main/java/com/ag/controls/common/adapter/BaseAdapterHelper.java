@@ -77,7 +77,7 @@ public class BaseAdapterHelper {
     Object associatedObject;
 
     protected BaseAdapterHelper(Context context, ViewGroup parent,
-                                int layoutId, int position) {
+                                int layoutId, int position, QuickAdapter.IAutoView iAutoView) {
         this.context = context;
         this.position = position;
         this.layoutId = layoutId;
@@ -85,6 +85,9 @@ public class BaseAdapterHelper {
         convertView = LayoutInflater.from(context) //
                 .inflate(layoutId, parent, false);
         convertView.setTag(this);
+        if(iAutoView!=null){
+            iAutoView.onAutoView(convertView);
+        }
     }
 
     /**
@@ -105,8 +108,15 @@ public class BaseAdapterHelper {
      */
     static BaseAdapterHelper get(Context context, View convertView,
                                  ViewGroup parent, int layoutId, int position) {
+        return get(context,convertView,parent,layoutId,position,null);
+
+    }
+
+
+    static BaseAdapterHelper get(Context context, View convertView,
+                                 ViewGroup parent, int layoutId, int position, QuickAdapter.IAutoView iAutoView) {
         if (convertView == null) {
-            return new BaseAdapterHelper(context, parent, layoutId, position);
+            return new BaseAdapterHelper(context, parent, layoutId, position,iAutoView);
         }
 
         // Retrieve the existing helper and update its position
@@ -114,7 +124,7 @@ public class BaseAdapterHelper {
                 .getTag();
 
         if (existingHelper.layoutId != layoutId) {
-            return new BaseAdapterHelper(context, parent, layoutId, position);
+            return new BaseAdapterHelper(context, parent, layoutId, position,iAutoView);
         }
 
         existingHelper.position = position;
