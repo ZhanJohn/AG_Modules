@@ -36,7 +36,7 @@ public class AGWebViewUtils {
         //
         if (context instanceof Activity) {
             ((Activity) context).startActivity(intent);
-            AGActivity.LeftIn((Activity) context);
+            AGActivity.leftIn((Activity) context);
         } else {
             context.startActivity(intent);
         }
@@ -50,7 +50,7 @@ public class AGWebViewUtils {
         intent.putExtra("obj", (Serializable) result);
         if(context instanceof Activity){
             ((Activity)context).startActivity(intent);
-            AGActivity.LeftIn((Activity)context);
+            AGActivity.leftIn((Activity)context);
         }else{
             context.startActivity(intent);
         }
@@ -68,7 +68,7 @@ public class AGWebViewUtils {
         //
         if(context instanceof Activity){
             ((Activity)context).startActivity(intent);
-            AGActivity.LeftIn((Activity)context);
+            AGActivity.leftIn((Activity)context);
         }else{
             context.startActivity(intent);
         }

@@ -37,6 +37,16 @@ public class AGResource {
 	public static int getIdByName(Context context,String name){
 		return getValueIntByName(context, name, "id");
 	}
+
+	/**
+	 * 获取Style值
+	 * @param context
+	 * @param name
+     * @return
+     */
+	public static int getStyleByName(Context context,String name){
+		return getValueIntByName(context, name, "style");
+	}
 	
 	/**
 	 * 获取项目的静态文件或控件

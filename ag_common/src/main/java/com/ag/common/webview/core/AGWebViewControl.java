@@ -146,11 +146,11 @@ public class AGWebViewControl {
 				System.out.println("myWebView-重定向网址=" + url);
 
 				if(url.indexOf("tel:")>=0){
-					AGActivity.CallPhone((Activity)context, url.substring(4));
+					AGActivity.callPhone((Activity)context, url.substring(4));
 					return true;
 				}
 				else if(url.indexOf("tencent://")>=0){
-					AGActivity.OpenQQ((Activity)context, AGActivity.getQQNumber(url));
+					AGActivity.openQQ((Activity)context, AGActivity.getQQNumber(url));
 					return true;
 				}
 
