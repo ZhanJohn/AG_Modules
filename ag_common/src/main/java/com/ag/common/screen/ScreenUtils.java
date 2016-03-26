@@ -159,15 +159,15 @@ public class ScreenUtils {
     }
     
     
-    public static int GetScreenWidth(Context context){
+    public static int getScreenWidth(Context context){
 		return context.getResources().getDisplayMetrics().widthPixels;
 	}
 	
-	public static int GetScreenHeight(Context context){
+	public static int getScreenHeight(Context context){
 		return context.getResources().getDisplayMetrics().heightPixels;
 	}
 	
-	public static DisplayMetrics GetScreenDisplay(Context context){
+	public static DisplayMetrics getScreenDisplay(Context context){
 		return context.getResources().getDisplayMetrics();
 	}
 	
@@ -180,8 +180,8 @@ public class ScreenUtils {
 	 * @param oldHeight 原来的高比例
 	 * @return
 	 */
-	public static int GetItemHeight(Context context,float overWidth,int itemCount,float oldWidth,float oldHeight){
-		int width=GetScreenWidth(context);
+	public static int getItemHeight(Context context,float overWidth,int itemCount,float oldWidth,float oldHeight){
+		int width=getScreenWidth(context);
 		int itemWidth=Math.round((width-overWidth)/itemCount);
 		int itemHeight=Math.round((itemWidth/oldWidth)*oldHeight);
 		return itemHeight;
@@ -196,7 +196,7 @@ public class ScreenUtils {
 	public static float getScreenMotion(Context context,float motionX){
 		if(motionX<=0)
 			return 0f;
-		int width=ScreenUtils.GetScreenWidth(context);
+		int width=getScreenWidth(context);
 		int screen= Math.round(width/720);
 		screen=screen==0?1:screen;
 		return screen*motionX;

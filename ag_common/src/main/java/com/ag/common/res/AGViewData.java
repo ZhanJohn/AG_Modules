@@ -30,7 +30,7 @@ public class AGViewData {
 			parentView.removeAllViews();
 		}
 		
-		int itemWidth= ScreenUtils.GetScreenWidth(context)/list.size();
+		int itemWidth= ScreenUtils.getScreenWidth(context)/list.size();
 		LayoutInflater inflater=LayoutInflater.from(context);
 		//选中项
 		parentView.setTag(selectPos);

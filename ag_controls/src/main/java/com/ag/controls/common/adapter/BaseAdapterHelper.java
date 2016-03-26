@@ -180,6 +180,12 @@ public class BaseAdapterHelper {
         return this;
     }
 
+    public BaseAdapterHelper setImageColorFilter(int viewId, int colorId) {
+        ImageView view = retrieveView(viewId);
+        view.setColorFilter(colorId);
+        return this;
+    }
+
     /**
      * Will set background color of a view.
      *
