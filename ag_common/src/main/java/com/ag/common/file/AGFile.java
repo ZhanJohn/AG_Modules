@@ -6,10 +6,13 @@ import com.ag.common.other.StringUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class AGFile {
@@ -97,7 +100,7 @@ public class AGFile {
 	 * @param filePath
 	 * @return
 	 */
-	public static long GetFileLength(String filePath){
+	public static long getFileLength(String filePath){
 		File file=new File(filePath);
 		return file.length();
 	}
@@ -106,7 +109,7 @@ public class AGFile {
 	 * @param dirPath
 	 * @return
 	 */
-	public static long GetPathLength(String dirPath){
+	public static long getPathLength(String dirPath){
 		File dir=new File(dirPath);
 		return getDirSize(dir);
 	}
@@ -139,7 +142,7 @@ public class AGFile {
 	 * @param size
 	 * @return
 	 */
-	public static String GetFileSize(long size){
+	public static String getFileSize(long size){
 		int kbSize=(int)size/1024;
 		if(kbSize>1024){
 			float mbSize=kbSize/1024;
@@ -157,7 +160,7 @@ public class AGFile {
 	 *            要删除文件或目录的路径。
 	 * @return 当且仅当成功删除文件或目录时，返回 true；否则返回 false。
 	 */
-	public static boolean DeleteFile(String filePath) {
+	public static boolean deleteFile(String filePath) {
 		File file = new File(filePath);
 		if (file.listFiles() == null)
 			return true;
@@ -165,7 +168,7 @@ public class AGFile {
 			File[] files = file.listFiles();
 			for (File deleteFile : files) {
 				if (deleteFile.isDirectory())
-					DeleteAllFile(deleteFile);
+					deleteAllFile(deleteFile);
 				else
 					deleteFile.delete();
 			}
@@ -178,12 +181,12 @@ public class AGFile {
 	 * @param file
 	 * @return
 	 */
-	private static boolean DeleteAllFile(File file) {
+	private static boolean deleteAllFile(File file) {
 		File[] files = file.listFiles();
 		for (File deleteFile : files) {
 			if (deleteFile.isDirectory()) {
 				// 如果是文件夹，则递归删除下面的文件后再删除该文件夹
-				if (!DeleteAllFile(deleteFile)) {
+				if (!deleteAllFile(deleteFile)) {
 					// 如果失败则返回
 					return false;
 				}
@@ -195,6 +198,24 @@ public class AGFile {
 			}
 		}
 		return file.delete();
+	}
+
+	public static List<String> getJpgsFile(File file){
+		if(file==null || !file.exists())
+			return null;
+		return Arrays.asList(file.list(new FilenameFilter()
+		{
+			@Override
+			public boolean accept(File dir, String filename)
+			{
+				filename= filename.toLowerCase();
+				if (filename.endsWith(".jpg")
+						|| filename.endsWith(".png")
+						|| filename.endsWith(".jpeg"))
+					return true;
+				return false;
+			}
+		}));
 	}
 
 }
