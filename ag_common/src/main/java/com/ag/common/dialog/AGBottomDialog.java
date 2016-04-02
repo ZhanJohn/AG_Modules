@@ -2,6 +2,7 @@ package com.ag.common.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.Display;
 import android.view.Gravity;
@@ -86,6 +87,12 @@ public class AGBottomDialog {
 
     public AGBottomDialog setCanceledOnTouchOutside(boolean cancel) {
         dialog.setCanceledOnTouchOutside(cancel);
+        return this;
+    }
+
+    public AGBottomDialog setDimissListener(DialogInterface.OnDismissListener onDismissListener){
+        if(onDismissListener!=null)
+            dialog.setOnDismissListener(onDismissListener);
         return this;
     }
 

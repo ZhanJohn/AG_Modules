@@ -1,10 +1,13 @@
 package com.ag.common.file;
 
+import android.graphics.Bitmap;
 import android.os.Environment;
 
+import com.ag.common.date.DateUtil;
 import com.ag.common.other.StringUtils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -41,7 +44,8 @@ public class AGFile {
 	 */
 	public static File creatSDDir(String dirName) {
 		File dir = new File(SDPATH + dirName);
-		dir.mkdir();
+		if(!dir.exists())
+			dir.mkdir();
 		return dir;
 	}
 
@@ -216,6 +220,34 @@ public class AGFile {
 				return false;
 			}
 		}));
+	}
+
+	public static String saveBitmap(String dirName,Bitmap bmp){
+		return saveBitmap(dirName,bmp,50);
+	}
+
+	public static String saveBitmap(String dirName,Bitmap bmp,int quality){
+		String filePath=SDPATH+dirName+"/"+ DateUtil.getNowDatePath()+".jpg";
+		creatSDDir(dirName);
+		File f = new File(filePath);
+		if (f.exists()) {
+			f.delete();
+		}
+
+		try {
+			f.createNewFile();
+			FileOutputStream out = new FileOutputStream(f);
+			bmp.compress(Bitmap.CompressFormat.JPEG, quality, out);
+			out.flush();
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return filePath;
 	}
 
 }

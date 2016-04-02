@@ -32,6 +32,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Checkable;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
@@ -506,6 +507,20 @@ public class BaseAdapterHelper {
         view.setOnClickListener(listener);
         return this;
     }
+
+    /**
+     * Sets the on checkedChange listener of the view.
+     * @param viewId
+     * @param listener
+     * @return
+     */
+    public BaseAdapterHelper setOnCheckedChangeListener(int viewId,
+                                                CompoundButton.OnCheckedChangeListener listener) {
+        View view = retrieveView(viewId);
+        ((CompoundButton)view).setOnCheckedChangeListener(listener);
+        return this;
+    }
+
 
     /**
      * Sets the on touch listener of the view.

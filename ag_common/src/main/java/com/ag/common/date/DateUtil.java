@@ -7,7 +7,17 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
-	
+
+
+	public static String getNowDatePath(){
+		long time=System.currentTimeMillis();
+		SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS");
+		if (0 == time) {
+			return "";
+		}
+		return mDateFormat.format(new Date(time));
+	}
+
 	public static String formatNowDateTime() {
 		long time=System.currentTimeMillis();
 		SimpleDateFormat mDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
