@@ -32,7 +32,7 @@ public class KeyboardUtils {
 	 * @param context
 	 * @param view
 	 */
-	public static void hidentKeyboard(Context context, View view){
+	public static void hideKeyboard(Context context, View view){
 		InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(view.getWindowToken() , 0); 
 	}

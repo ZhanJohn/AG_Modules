@@ -227,7 +227,7 @@ public class AGViewBarCreate {
 					public boolean onKey(View v, int keyCode, KeyEvent event) {
 						if (keyCode == KeyEvent.KEYCODE_ENTER) {
 							//Search Content
-							KeyboardUtils.hidentKeyboard(context, layout_et_search);
+							KeyboardUtils.hideKeyboard(context, layout_et_search);
 							if (searchListener != null) {
 								searchListener.onSearchContent(layout_et_search.getText().toString().trim());
 							}
@@ -239,7 +239,7 @@ public class AGViewBarCreate {
 					@Override
 					public void onClick(View v) {
 						//Search Content
-						KeyboardUtils.hidentKeyboard(context, layout_et_search);
+						KeyboardUtils.hideKeyboard(context, layout_et_search);
 						if (searchListener != null) {
 							searchListener.onSearchContent(layout_et_search.getText().toString().trim());
 						}

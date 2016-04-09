@@ -41,6 +41,7 @@ import android.widget.TextView;
 import com.ag.controls.customview.CircleImageView;
 import com.ag.controls.customview.NetImageParam;
 import com.ag.controls.customview.NetImageView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Allows an abstraction of the ViewHolder pattern.<br>
@@ -164,7 +165,12 @@ public class BaseAdapterHelper {
     public BaseAdapterHelper setText(int viewId, String value) {
         TextView view = retrieveView(viewId);
         view.setText(value);
-        Log.i(BaseAdapterHelper.class.getSimpleName(), "setText-" + view.getId() + "=" + value);
+        return this;
+    }
+
+    public BaseAdapterHelper setText(int viewId, CharSequence value) {
+        TextView view = retrieveView(viewId);
+        view.setText(value);
         return this;
     }
 
@@ -270,6 +276,12 @@ public class BaseAdapterHelper {
         Log.i(BaseAdapterHelper.class.getSimpleName(), "image-url=" + imageParam.getImgUrl());
 //		ImageLoader.getInstance().displayImage("", view);
 //		Picasso.with(context).load(imageUrl).placeholder(loadRes).error(errorRes).into(view);
+        return this;
+    }
+
+    public BaseAdapterHelper setImageUrl(int viewId, String imageUrl) {
+        ImageView view = retrieveView(viewId);
+		ImageLoader.getInstance().displayImage(imageUrl, view);
         return this;
     }
 

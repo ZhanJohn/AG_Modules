@@ -36,7 +36,6 @@ public class AGSharedPreferences {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(name, BTS.encodeBTS(value));
         editor.commit();
-        System.out.println("写入配置文件完成！");
     }
 
     /**

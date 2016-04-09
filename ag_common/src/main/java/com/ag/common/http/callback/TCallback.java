@@ -60,6 +60,7 @@ public class TCallback<T> extends Callback<T>{
     public T parseNetworkResponse(Response response) throws Exception {
         Gson gson = new Gson();
         String content=response.body().string();
+        Log.d("TCallback",content);
         T obj = null;
         Type objectType =null;
         try {
