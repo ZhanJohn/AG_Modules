@@ -28,6 +28,16 @@ public class AGSharedPreferences {
      * 设置配置文件的值
      * @param name 配置的KEY
      * @param value 配置的值
+     * @param context
+     */
+    public static void setSharePReferencesValue(String name,String value,Context context){
+        setSharePReferencesValue(name,value,context.MODE_PRIVATE,context);
+    }
+
+    /**
+     * 设置配置文件的值
+     * @param name 配置的KEY
+     * @param value 配置的值
      * @param mode 保存模式
      * @param context
      */
@@ -52,6 +62,14 @@ public class AGSharedPreferences {
     /**
      * 获取配置文件中的String
      */
+    public static String getValueBySharePreference(String key, Context context)
+    {
+        return getValueBySharePreference(key,context.MODE_PRIVATE,context);
+    }
+
+    /**
+     * 获取配置文件中的String
+     */
     public static String getValueBySharePreference(String key, int mode, Context context)
     {
         SharedPreferences preferences = context.getSharedPreferences(key,mode);
@@ -62,16 +80,9 @@ public class AGSharedPreferences {
     }
 
     public static <T> T getObjectFromJson(Context context,String key,Class<T> cls){
-        SharedPreferences preferences = context.getSharedPreferences(key, Context.MODE_PRIVATE);
-        String s = preferences.getString(key, null);
-
-        if(s == null || s == ""){
-            return null;
-        }
+        String result=getValueBySharePreference(key,context.MODE_PRIVATE,context);
 
         try {
-            String result=BTS.decodeBTS(s);
-            Log.d("AGSharedPreferences","GetObjectFromJson=="+result);
             return (new Gson()).fromJson(result, cls);
         } catch (Exception e) {
             e.printStackTrace();

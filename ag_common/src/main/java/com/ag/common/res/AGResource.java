@@ -39,6 +39,16 @@ public class AGResource {
 	}
 
 	/**
+	 * 获取String ID
+	 * @param context
+	 * @param name
+     * @return
+     */
+	public static int getStringByName(Context context,String name){
+		return getValueIntByName(context, name, "string");
+	}
+
+	/**
 	 * 获取Style值
 	 * @param context
 	 * @param name

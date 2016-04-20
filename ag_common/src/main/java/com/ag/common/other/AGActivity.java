@@ -3,6 +3,8 @@ package com.ag.common.other;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 
 import com.ag.common.res.AGResource;
 
@@ -68,6 +70,26 @@ public class AGActivity {
 		Intent intent = new Intent(activity,cls);
 		activity.startActivityForResult(intent,request);
 		leftIn(activity);
+	}
+
+	public static void showActivityForResult(Activity activity, Class<?> cls, int request, String key, Bundle bundle){
+		Intent intent = new Intent(activity,cls);
+		intent.putExtra(key,bundle);
+		activity.startActivityForResult(intent,request);
+		leftIn(activity);
+	}
+
+	public static void showActivityForResult(Fragment fragment, Class<?> cls, int request){
+		Intent intent = new Intent(fragment.getActivity(),cls);
+		fragment.startActivityForResult(intent,request);
+		leftIn(fragment.getActivity());
+	}
+
+	public static void showActivityForResult(Fragment fragment, Class<?> cls, int request,String key, Bundle bundle){
+		Intent intent = new Intent(fragment.getActivity(),cls);
+		intent.putExtra(key,bundle);
+		fragment.startActivityForResult(intent,request);
+		leftIn(fragment.getActivity());
 	}
 	
 }

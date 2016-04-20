@@ -509,6 +509,19 @@ public final class StringUtils {
 		return result;
 	}
 
+	public static Long safeLong(String value,Long defaultValue){
+		long result = 0;
+		try {
+			if (value.contains(",")) {
+				value = value.replaceAll(",", "");
+			}
+			result = Long.parseLong(value);
+		} catch (Exception e) {
+			return defaultValue;
+		}
+		return result;
+	}
+
 	/**
 	 * 将字符串字面值转换为浮点数
 	 * 

@@ -5,9 +5,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class DateUtil {
 
+	public static long getChinaTimeMillis(){
+
+		Calendar calendar=Calendar.getInstance(Locale.CHINA);
+		long millis=calendar.getTimeInMillis();
+		return millis;
+	}
 
 	public static String getNowDatePath(){
 		long time=System.currentTimeMillis();

@@ -1,5 +1,6 @@
 package com.ag.common.pattern;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.regex.Matcher;
@@ -7,7 +8,6 @@ import java.util.regex.Pattern;
 
 /**
  * 正则工具类
- * @author JohnZhan
  *
  */
 public class PatternUtil {
@@ -93,6 +93,25 @@ public class PatternUtil {
 		Pattern pat = Pattern.compile(regEx);
 		Matcher mat = pat.matcher(value);
 		return mat.find();
+	}
+
+	public static String checkMobile(String mobile){
+		if(TextUtils.isEmpty(mobile) || mobile.length()<11)
+			return null;
+
+		mobile=mobile.replace("-","");
+		if(mobile.length()<11)
+			return null;
+
+		mobile=mobile.substring(mobile.length()-11);
+
+		String regEx = "^1(\\d){10}$";
+		Pattern pat = Pattern.compile(regEx);
+		Matcher mat = pat.matcher(mobile);
+		if(mat.find()){
+			return mobile;
+		}
+		return null;
 	}
 	
 }

@@ -4,9 +4,11 @@ package com.ag.common.provider;
 import android.content.Context;
 import android.database.Cursor;
 import android.provider.ContactsContract;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.ag.common.other.StringUtils;
+import com.ag.common.pattern.PatternUtil;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,6 +17,69 @@ import java.util.List;
 public class AGContacts {
 
     private final static String TAG="AGContacts";
+
+    /**
+     * 获取所有手机号码
+     * @param context
+     * @return
+     */
+    public static List<String> getAllMobiles(Context context){
+        List<String> list=new ArrayList<>();
+        Cursor cursor = context.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+        int contactIdIndex = 0;
+        int nameIndex = 0;
+
+        if(cursor.getCount() > 0) {
+            contactIdIndex = cursor.getColumnIndex(ContactsContract.Contacts._ID);
+            nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME);
+        }
+        while(cursor.moveToNext()) {
+            String contactId = cursor.getString(contactIdIndex);
+            String name = cursor.getString(nameIndex);
+            Log.i(TAG, contactId);
+            Log.i(TAG, name);
+
+            // 查看联系人有多少个号码，如果没有号码，返回0
+            int phoneCount = cursor.getInt(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
+            if (phoneCount <= 0) {
+                continue;
+            }
+
+            /*
+             * 查找该联系人的phone信息
+             */
+            Cursor phones = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    null,
+                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactId,
+                    null, null);
+            int phoneIndex = 0, photoType = 0;
+            if (phones.getCount() > 0) {
+                phoneIndex = phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                photoType = phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE);
+            }
+            while (phones.moveToNext()) {
+                String phoneNumber = phones.getString(phoneIndex);
+                String type = phones.getString(photoType);
+
+                switch(StringUtils.SafeInt(type,0)){
+                    case ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE:
+                        String mobile= PatternUtil.checkMobile(phoneNumber);
+                        if(!TextUtils.isEmpty(mobile)){
+                            list.add(mobile);
+                        }
+                        break;
+                }
+
+                Log.i(TAG, phoneNumber + ";type=" + type);
+            }
+            if(!phones.isClosed())
+                phones.close();
+
+        }
+        if(!cursor.isClosed())
+            cursor.close();
+        return list;
+    }
 
     /*
      * 读取联系人的信息

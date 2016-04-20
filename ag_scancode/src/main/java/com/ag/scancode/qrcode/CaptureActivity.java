@@ -25,6 +25,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ag.scancode.camera.CameraManager;
@@ -86,6 +87,8 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 	private boolean hasLight;
 	private ImageButton btnLight, mImageButton, btnBack;
 	public ImageButton btnScanLog;
+	private ImageView layout_img_scan_bg;
+	private static final int PICTURE=22;
 
 	ViewfinderView getViewfinderView() {
 		return viewfinderView;
@@ -105,14 +108,14 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 		Window window = getWindow();
 		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		setContentView(ResourceUtil.getLayoutByName(this, "activity_capture"));
-
+		layout_img_scan_bg=(ImageView)findViewById(ResourceUtil.getIdByName(this,"layout_img_scan_bg"));
 		btnBack = (ImageButton) findViewById(ResourceUtil.getIdByName(this, "btn_back"));
 		btnLight = (ImageButton) findViewById(ResourceUtil.getIdByName(this, "btn_light"));
 		btnScanLog = (ImageButton) findViewById(ResourceUtil.getIdByName(this, "btn_scanlog"));
 		mImageButton = (ImageButton) findViewById(ResourceUtil.getIdByName(this, "button_function"));
 
 		btnLight.setOnClickListener(this);
-//		btnScanLog.setOnClickListener(this);
+		btnScanLog.setOnClickListener(this);
 		mImageButton.setOnClickListener(this);
 		btnBack.setOnClickListener(this);
 
@@ -140,9 +143,6 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 
 		viewfinderView = (ViewfinderView) findViewById(ResourceUtil.getIdByName(this, "viewfinder_view"));
 		viewfinderView.setCameraManager(cameraManager);
-
-//		resultView = findViewById(ResourceUtil.getIdByName(this, "").result_view);
-//		statusView = (TextView) findViewById(ResourceUtil.getIdByName(this, "").status_view);
 
 		handler = null;
 		lastResult = null;
@@ -184,7 +184,7 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 
 		if (isOpen) {
 			isOpen = false;
-			btnLight.setImageResource(ResourceUtil.getDrawbleByName(this, "icon48x48_sweep_1c"));
+			btnLight.setImageResource(ResourceUtil.getMipmapByName(this, "icon48x48_sweep_1c"));
 			cameraManager.setTorch(false);
 		}
 
@@ -250,7 +250,6 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 				}
 
 				setResult(120, getIntent());
-//			application.finishActivity(this);
 				finish();
 
 				break;
@@ -271,23 +270,11 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
-//		if(EtuiConfig.ET_REQUEST_CODE==requestCode && application.isTurnOrder()){
-//			//支付成功，跳往用户界面的订单列表
-//			//Toast.makeText(HomeActivity.this, "123", Toast.LENGTH_SHORT).show();
-//			tabMain.SetTabName(TabMainEnum.Person);
-//			application.finishActivity(this);
-//			return;
-//		}
-
 		if(resultCode!=RESULT_OK)
 			return;
 
 		if(requestCode==PICTURE){
-			System.out.println("CaptureActivity获取到图片");
-
 			if(intent==null){
-				System.out.println("CaptureActivity数据对象为空");
 				return;
 			}
 
@@ -299,12 +286,10 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 			int columnIndex = c.getColumnIndex(filePathColumns[0]);
 			String picturePath = c.getString(columnIndex);
 			c.close();
-			System.out.println("获取的图片路径="+picturePath);
 			// 获取图片并显示
 //			Bitmap bmp = BitmapFactory.decodeFile(picturePath);
 			Bitmap bmp = ImageUtils.getZoomImage(picturePath);
 			if(bmp==null){
-				System.out.println("bmp=null");
 				return;
 			}
 			// 开始对图像资源解码
@@ -326,16 +311,13 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 			}
 
 			if(rawResult==null){
-				System.out.println("RawResult=null");
 				Toast.makeText(getApplicationContext(), "检测不到二维码图片,请重新选择", Toast.LENGTH_LONG).show();
 				return;
 			}
 
-			System.out.println("resultText="+rawResult.getText());
 			handleDecode(rawResult, bmp, 0);
 
 			if (!bmp.isRecycled()) {
-				Log.i(TAG, "回收扫码临时bitmap");
 				bmp.recycle();
 				System.gc();
 			}
@@ -398,6 +380,11 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 	 * @param scanResult
      */
 	public abstract void handleDecode(String scanResult);
+
+	/**
+	 * 打开扫码历史
+	 */
+	public abstract void openScanHistory();
 
 	/**
 	 * Superimpose a line for 1D or dots for 2D to highlight the key features of the barcode.
@@ -499,25 +486,11 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 
 	@Override
 	public void onClick(View v) {
-		Intent intent = null;
-//		switch(v.getId()){
-
-//		case ResourceUtil.getIdByName(this, "").btn_back:
-//			setResult(EtuiConfig.ET_SCAN, getIntent());
-//			application.finishActivity(this);
 		if (v.getId() == ResourceUtil.getIdByName(this, "btn_back")) {
 			finish();
 		}
 
-//			break;
-
-//		case ResourceUtil.getIdByName(this, "").btn_scanlog:
-//			intent = new Intent(CaptureActivity.this, ScanLogActivity.class);
-//			startActivityForResult(intent, EtuiConfig.ET_REQUEST_CODE);
-//			break;
-
-//		case ResourceUtil.getIdByName(this, "").btn_light:
-		if (v.getId() == ResourceUtil.getIdByName(this, "btn_light")) {
+		else if (v.getId() == ResourceUtil.getIdByName(this, "btn_light")) {
 
 			PackageManager pm = this.getPackageManager();
 			FeatureInfo[] features = pm.getSystemAvailableFeatures();
@@ -536,29 +509,28 @@ public abstract class CaptureActivity extends Activity implements SurfaceHolder.
 				//　当前打开，改为关闭
 				if (isOpen) {
 					isOpen = false;
-					btnLight.setImageResource(ResourceUtil.getDrawbleByName(this, "icon48x48_sweep_1c"));
+					btnLight.setImageResource(ResourceUtil.getMipmapByName(this, "icon48x48_sweep_1c"));
 					cameraManager.setTorch(false);
 				}
 				//　当前关闭，改为打开
 				else {
 					isOpen = true;
-					btnLight.setImageResource(ResourceUtil.getDrawbleByName(this, "icon48x48_sweep_1"));
+					btnLight.setImageResource(ResourceUtil.getMipmapByName(this, "icon48x48_sweep_1"));
 					cameraManager.setTorch(true);
 				}
 			}else {
 				Toast.makeText(getApplicationContext(), "该设备不支持闪光灯", Toast.LENGTH_LONG).show();
 			}
 		}
-//			break;
 
-//		case ResourceUtil.getIdByName(this, "").button_function:
-		if (v.getId() == ResourceUtil.getIdByName(this, "button_function")) {
-
-
-			intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+		else if (v.getId() == ResourceUtil.getIdByName(this, "button_function")) {
+			Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			startActivityForResult(intent, PICTURE);
-//			break;
 		}
+		else if(v.getId() == ResourceUtil.getIdByName(this,"btn_scanlog")){
+			openScanHistory();
+		}
+
 	}
-	private static final int PICTURE=22;
+
 }

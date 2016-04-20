@@ -17,7 +17,7 @@
 
         <!-- 扫码范围圈圈 -->
 
-        <com.zqeasy.zxing.qrcode.ViewfinderView
+        <com.ag.scancode.qrcode.ViewfinderView
             android:id="@+id/viewfinder_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,24 +28,10 @@
             android:visibility="gone" />
 
         <ImageView
+            android:id="@+id/layout_img_scan_bg"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@drawable/bg_scan" />
-		 <!-- 
-        <Button
-            android:id="@+id/btn_light"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_margin="10dp"
-            android:background="@color/transparent"
-            android:padding="10dp"
-            android:text="开/关灯"
-            android:textColor="@color/gray" />
-		 -->
-
-       
 
         <ImageButton
             android:id="@+id/btn_scanlog"

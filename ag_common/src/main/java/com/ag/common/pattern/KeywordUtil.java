@@ -21,6 +21,8 @@ public class KeywordUtil {
      */
     public static SpannableString matcherSearchTitle(int color, String text,
                                                      String keyword) {
+        if(text==null)
+            text="";
         SpannableString s = new SpannableString(text);
         Pattern p = Pattern.compile(keyword);
         Matcher m = p.matcher(s);
@@ -42,6 +44,8 @@ public class KeywordUtil {
      */
     public static SpannableString matcherSearchTitle(int color, String text,
                                                      String[] keyword) {
+        if(text==null)
+            text="";
         SpannableString s = new SpannableString(text);
         for (int i = 0; i < keyword.length; i++) {
             Pattern p = Pattern.compile(keyword[i]);

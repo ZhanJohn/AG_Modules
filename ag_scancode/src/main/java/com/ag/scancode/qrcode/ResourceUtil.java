@@ -14,6 +14,10 @@ public class ResourceUtil {
 		return getValueIntByName(context, name, "drawable");
 	}
 
+	public static int getMipmapByName(Context context,String name){
+		return getValueIntByName(context, name, "mipmap");
+	}
+
 	/**
 	 * 获取Layout-xx目录下的静态布局
 	 * @param context

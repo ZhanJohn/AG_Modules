@@ -33,7 +33,7 @@ import okhttp3.Response;
 public class OkHttpUtils
 {
 
-    public static final long DEFAULT_MILLISECONDS = 10000;
+    public static final long DEFAULT_MILLISECONDS = 20*1000;
     private static OkHttpUtils mInstance;
     private OkHttpClient mOkHttpClient;
     private Handler mDelivery;
@@ -251,6 +251,18 @@ public class OkHttpUtils
             {
                 call.cancel();
             }
+        }
+    }
+
+    public void cancelAllCalls()
+    {
+        for (Call call : mOkHttpClient.dispatcher().queuedCalls())
+        {
+            call.cancel();
+        }
+        for (Call call : mOkHttpClient.dispatcher().runningCalls())
+        {
+            call.cancel();
         }
     }
 

@@ -42,7 +42,7 @@
     </style>
 
     <style name="ActionSheetDialogAnimation" parent="@android:style/Animation.Dialog">
-        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowEnterAnimation">@anim/push_top_in</item>
         <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
     </style>
 
