@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
@@ -128,7 +127,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 				infos.put("versionName", versionName);
 				infos.put("versionCode", versionCode);
 			}
-		} catch (NameNotFoundException e) {
+		} catch (Exception e) {
 			Log.e(TAG, "an error occured when collect package info", e);
 		}
 		Field[] fields = Build.class.getDeclaredFields();

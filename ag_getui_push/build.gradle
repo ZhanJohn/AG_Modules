@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+group = 'com.ag.push'
+version = '1.0.0'
 
 android {
     compileSdkVersion 23
@@ -30,8 +33,17 @@ repositories {
     }
 }
 
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = 'ag_push'
+            repository(url: 'file://' + project.rootDir + '/ag_push/outputs-aar')
+        }
+    }
+}
+
 dependencies {
-    compile 'com.igexin:sdk:+'
+    compile 'com.igexin:sdk:2.7.0.0'
     compile 'com.igexin:getuiext:2.0.3'
     compile 'cz.msebera.android:httpclient:4.4.1.1'
 }

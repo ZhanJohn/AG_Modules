@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/ag_scancode/ag_scancode.iml" filepath="$PROJECT_DIR$/ag_scancode/ag_scancode.iml" />
       <module fileurl="file://$PROJECT_DIR$/ag_share/ag_share.iml" filepath="$PROJECT_DIR$/ag_share/ag_share.iml" />
       <module fileurl="file://$PROJECT_DIR$/ag_umeng_push/ag_umeng_push.iml" filepath="$PROJECT_DIR$/ag_umeng_push/ag_umeng_push.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ag_webview/ag_webview.iml" filepath="$PROJECT_DIR$/ag_webview/ag_webview.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

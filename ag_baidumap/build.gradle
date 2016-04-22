@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+group = 'com.ag.baidumap'
+version = '1.0.0'
 
 android {
     compileSdkVersion 23
@@ -23,7 +26,15 @@ android {
     }
 }
 
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = 'ag_baidumap'
+            repository(url: 'file://' + project.rootDir + '/ag_baidumap/outputs-aar')
+        }
+    }
+}
+
 dependencies {
-    testCompile 'junit:junit:4.12'
     compile files('libs/locSDK_6.13.jar')
 }

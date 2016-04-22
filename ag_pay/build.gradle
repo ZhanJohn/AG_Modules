@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+group = 'com.ag.pay'
+version = '1.0.0'
 
 android {
     compileSdkVersion 23
@@ -18,8 +21,16 @@ android {
     }
 }
 
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = 'ag_pay'
+            repository(url: 'file://' + project.rootDir + '/ag_pay/outputs-aar')
+        }
+    }
+}
+
 dependencies {
-    testCompile 'junit:junit:4.12'
     compile files('libs/libammsdk.jar')
     compile files('libs/alipaySdk-20160111.jar')
 }

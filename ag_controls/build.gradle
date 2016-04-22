@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+group = 'com.ag.controls'
+version = '1.0.0'
 
 android {
     compileSdkVersion 23
@@ -18,9 +21,16 @@ android {
     }
 }
 
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = 'ag_controls'
+            repository(url: 'file://' + project.rootDir + '/ag_controls/outputs-aar')
+        }
+    }
+}
+
 dependencies {
     compile 'com.android.support:support-v4:23.2.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'org.jsoup:jsoup:1.8.3'
-    compile 'com.zhy:autolayout:1.4.2'
 }

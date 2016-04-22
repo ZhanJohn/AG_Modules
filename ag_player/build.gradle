@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+group = 'com.ag.player'
+version = '1.0.0'
 
 android {
     compileSdkVersion 23
@@ -18,8 +21,16 @@ android {
     }
 }
 
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = 'ag_player'
+            repository(url: 'file://' + project.rootDir + '/ag_player/outputs-aar')
+        }
+    }
+}
+
 dependencies {
-    testCompile 'junit:junit:4.12'
     compile files('libs/playersdk.jar')
     compile files('libs/exoplayerlib.jar')
 }

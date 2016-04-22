@@ -5,7 +5,7 @@ import android.view.View;
 import java.util.Calendar;
 
 /**
- *
+ *防止点击多次
  */
 public abstract class NoDoubleClickListener implements View.OnClickListener{
 

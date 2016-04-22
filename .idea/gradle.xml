@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/ag_scancode" />
             <option value="$PROJECT_DIR$/ag_share" />
             <option value="$PROJECT_DIR$/ag_umeng_push" />
+            <option value="$PROJECT_DIR$/ag_webview" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
@@ -32,6 +33,7 @@
             <option value="$PROJECT_DIR$/ag_scancode" />
             <option value="$PROJECT_DIR$/ag_share" />
             <option value="$PROJECT_DIR$/ag_umeng_push" />
+            <option value="$PROJECT_DIR$/ag_webview" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

@@ -1,2 +1,2 @@
-include ':app', ':ag_umeng_push', ':ag_getui_push', ':ag_share', ':ag_common', ':ag_scancode', ':ag_pay',
+include ':app', ':ag_umeng_push', ':ag_getui_push', ':ag_share', ':ag_common', ':ag_scancode', ':ag_pay', ':ag_webview',
         ':ag_baidumap', ':ag_controls', ':ag_player'

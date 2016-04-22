@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+group = 'com.ag.scancode'
+version = '1.0.0'
 
 android {
     compileSdkVersion 23
@@ -14,6 +17,15 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = 'ag_scancode'
+            repository(url: 'file://' + project.rootDir + '/ag_scancode/outputs-aar')
         }
     }
 }

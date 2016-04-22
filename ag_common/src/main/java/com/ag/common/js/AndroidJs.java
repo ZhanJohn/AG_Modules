@@ -13,7 +13,6 @@ import com.ag.common.js.bean.ShareParam;
 import com.ag.common.js.bean.WXPayParams;
 import com.ag.common.js.interfaces.AGAndroidJsSingleton;
 import com.ag.common.other.StringUtils;
-import com.ag.common.shake.IShakeListener;
 import com.ag.common.shake.ShakeHelper;
 import com.google.gson.Gson;
 
@@ -170,7 +169,7 @@ public class AndroidJs extends AGNativeJS {
 			return;
 		final RegShakeInfo info=(new Gson()).fromJson(respFun,RegShakeInfo.class);
 		//注册摇一摇监听事件
-		ShakeHelper.getInstance(webView.getContext()).startShake(new IShakeListener() {
+		ShakeHelper.getInstance(webView.getContext()).startShake(new ShakeHelper.IShakeListener() {
 			@Override
 			public void onShakeSuccess() {
 				webView.loadUrl(String.format("javascript:%s()", info.getRespFun()));

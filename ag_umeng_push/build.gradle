@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+group = 'com.ag.umeng_push'
+version = '1.0.0'
 
 android {
     compileSdkVersion 23
@@ -19,6 +22,15 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.artifactId = 'ag_umeng_push'
+            repository(url: 'file://' + project.rootDir + '/ag_umeng_push/outputs-aar')
         }
     }
 }
