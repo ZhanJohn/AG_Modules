@@ -1,6 +1,7 @@
 package com.ag.common.http.callback;
 
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.ag.common.http.model.CommonJson;
@@ -79,6 +80,9 @@ public class TCallback<T> extends Callback<T>{
 
     @Override
     public void onError(Call call, Exception e) {
+        if(e==null || TextUtils.isEmpty(e.getMessage())){
+            return;
+        }
         Log.d("TCallback",e.getMessage());
         if(iHttpResponseT!=null){
             iHttpResponseT.onError(e.getMessage());

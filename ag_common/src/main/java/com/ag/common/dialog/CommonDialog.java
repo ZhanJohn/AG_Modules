@@ -3,6 +3,7 @@ package com.ag.common.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,22 +19,25 @@ import java.util.List;
 
 
 /**
- * 内容是一个list，带有标示选中状态
+ * 列表，可带选中标志
  *
  */
 public class CommonDialog extends Dialog implements View.OnClickListener {
 
-	private int defaultID;
+	private String checkItem;
 	private int position;
 	private Context activityContext;
 	private List<DialogEntity> list=new ArrayList<DialogEntity>();
 	
 	ICommonDialogResultListener dialogResultListener;
 	
-	public CommonDialog(Context context,int theme,int defaultID) {
+	public CommonDialog(Context context,int theme) {
 		super(context,theme);
 		activityContext=context;
-		this.defaultID=defaultID;
+	}
+
+	public void setCheckItem(String checkItem){
+		this.checkItem=checkItem;
 	}
 	
 	public void setDialogListener(ICommonDialogResultListener resultListener){
@@ -72,7 +76,7 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
 			tvName.setText(data.getValue());
 
 			
-			if(defaultID==Integer.parseInt(data.getId())){
+			if(!TextUtils.isEmpty(data.getId()) && checkItem.equals(data.getId())){
 				img.setVisibility(View.VISIBLE);
 			}
 			

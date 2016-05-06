@@ -9,6 +9,21 @@ import java.util.Locale;
 
 public class DateUtil {
 
+	/**
+	 *
+	 * format:yyyyMMdd_HHmmss_SSS
+	 * @param time
+	 * @param format
+     * @return
+     */
+	public static String getStringDateFormat(long time,String format){
+		SimpleDateFormat mDateFormat = new SimpleDateFormat(format);
+		if (0 == time) {
+			return "";
+		}
+		return mDateFormat.format(new Date(time));
+	}
+
 	public static long getChinaTimeMillis(){
 
 		Calendar calendar=Calendar.getInstance(Locale.CHINA);
