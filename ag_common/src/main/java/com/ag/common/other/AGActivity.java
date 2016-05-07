@@ -3,6 +3,7 @@ package com.ag.common.other;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
@@ -91,5 +92,31 @@ public class AGActivity {
 		fragment.startActivityForResult(intent,request);
 		leftIn(fragment.getActivity());
 	}
+
+	public static void showImageActivity(Activity activity,int request){
+		Intent intent;
+		if (Build.VERSION.SDK_INT < 19) {
+			intent = new Intent(Intent.ACTION_GET_CONTENT);
+			intent.setType("image/*");
+
+		} else {
+			intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+		}
+		activity.startActivityForResult(intent, request);
+	}
+
+	public static void showImageActivity(Fragment fragment,int request){
+		Intent intent;
+		if (Build.VERSION.SDK_INT < 19) {
+			intent = new Intent(Intent.ACTION_GET_CONTENT);
+			intent.setType("image/*");
+
+		} else {
+			intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+		}
+		fragment.startActivityForResult(intent, request);
+	}
+
+
 	
 }

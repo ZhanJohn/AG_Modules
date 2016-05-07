@@ -18,14 +18,20 @@ import java.util.List;
 public class AGViewData {
 	
 	public interface IMenuResult{
-		public void turnItem(int position);
+		void turnItem(int position);
 	}
 	
 	public static void setBottomMenu(final Context context,final LinearLayout parentView,int selectPos,List<XmlBottomMenu> list,final IMenuResult iMenuResult){
-		setBottomMenu(context, parentView, selectPos, list, iMenuResult, false);
+		int itemLayoutID=AGResource.getLayoutByName(context, "bottom_menu_item");
+		setBottomMenu(context, parentView,itemLayoutID, selectPos, list, iMenuResult, false);
 	}
 
 	public static void setBottomMenu(final Context context,final LinearLayout parentView,int selectPos,List<XmlBottomMenu> list,final IMenuResult iMenuResult,final boolean isSameReturn){
+		int itemLayoutID=AGResource.getLayoutByName(context, "bottom_menu_item");
+		setBottomMenu(context, parentView,itemLayoutID, selectPos, list, iMenuResult, isSameReturn);
+	}
+
+	public static void setBottomMenu(final Context context,final LinearLayout parentView,int itemLayoutID,int selectPos,List<XmlBottomMenu> list,final IMenuResult iMenuResult,final boolean isSameReturn){
 		if(parentView!=null){
 			parentView.removeAllViews();
 		}
@@ -36,7 +42,7 @@ public class AGViewData {
 		parentView.setTag(selectPos);
 		//
 		for(XmlBottomMenu obj:list){
-			RelativeLayout layout=(RelativeLayout)inflater.inflate(AGResource.getLayoutByName(context, "bottom_menu_item"), null);
+			RelativeLayout layout=(RelativeLayout)inflater.inflate(itemLayoutID, null);
 			LayoutParams params=new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
 			params.width=itemWidth;
 			layout.setLayoutParams(params);
@@ -249,6 +255,48 @@ public class AGViewData {
 			ImageView item_img_red = (ImageView) item_layout.findViewById(AGResource.getIdByName(context, "item_img_red"));
 			if (pos == i + 1) {
 				item_img_red.setVisibility(visible);
+			}
+		}
+	}
+
+	/**
+	 * 设置某些项的文本
+	 * @param context
+	 * @param layout_bottom_menu
+	 * @param pos
+     * @param text
+     */
+	public static void setItemTextView(Context context,LinearLayout layout_bottom_menu,int pos,String text){
+		if(TextUtils.isEmpty(text))
+			return;
+		for (int i = 0; i < layout_bottom_menu.getChildCount(); i++) {
+			if (pos == i + 1) {
+				RelativeLayout item_layout = (RelativeLayout) layout_bottom_menu.getChildAt(i);
+				ImageView item_img=(ImageView)item_layout.findViewById(AGResource.getIdByName(context, "item_img"));
+				TextView item_tv_name=(TextView)item_layout.findViewById(AGResource.getIdByName(context, "item_tv_name"));
+				ImageView item_img_red = (ImageView) item_layout.findViewById(AGResource.getIdByName(context, "item_img_red"));
+
+				item_tv_name.setText(text);
+			}
+		}
+	}
+
+	/**
+	 * 设置某些项的图片
+	 * @param context
+	 * @param layout_bottom_menu
+	 * @param pos
+     * @param imgRes
+     */
+	public static void setItemImageView(Context context,LinearLayout layout_bottom_menu,int pos,int imgRes){
+		for (int i = 0; i < layout_bottom_menu.getChildCount(); i++) {
+			if (pos == i + 1) {
+				RelativeLayout item_layout = (RelativeLayout) layout_bottom_menu.getChildAt(i);
+				ImageView item_img=(ImageView)item_layout.findViewById(AGResource.getIdByName(context, "item_img"));
+				TextView item_tv_name=(TextView)item_layout.findViewById(AGResource.getIdByName(context, "item_tv_name"));
+				ImageView item_img_red = (ImageView) item_layout.findViewById(AGResource.getIdByName(context, "item_img_red"));
+
+				item_img.setImageResource(imgRes);
 			}
 		}
 	}
