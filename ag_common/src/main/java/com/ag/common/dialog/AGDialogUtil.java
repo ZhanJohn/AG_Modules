@@ -2,14 +2,9 @@ package com.ag.common.dialog;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.Selection;
-import android.text.Spannable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
 
 import com.ag.common.other.NetworkStateUtils;
 import com.ag.common.update.IAlertDialogResult;
@@ -17,21 +12,21 @@ import com.ag.common.update.MyAlertDialog;
 
 public class AGDialogUtil {
 
-	public static void ShowDialog(Activity activity, String title, String ok,
+	public static void showDialog(Context context, String title, String ok,
 			String cancel, final IAlertDialogResult iDialogResult) {
-		ShowDialog(activity, title, ok, cancel, null, null, null, null, 18, 18,
+		showDialog(context, title, ok, cancel, null, null, null, null, 18, 18,
 				iDialogResult);
 	}
 	
-	public static void ShowDialog(Activity activity, String title, String ok,
+	public static void showDialog(Context context, String title, String ok,
 			String cancel,float textsize, final IAlertDialogResult iDialogResult) {
-		ShowDialog(activity, title, ok, cancel, null, null, null, null, textsize, textsize,
+		showDialog(context, title, ok, cancel, null, null, null, null, textsize, textsize,
 				iDialogResult);
 	}
 
 	/**
 	 * 
-	 * @param activity
+	 * @param context
 	 * @param title
 	 * @param ok
 	 * @param cancel
@@ -43,12 +38,12 @@ public class AGDialogUtil {
 	 * @param negativeButtonTextSize
 	 * @param iDialogResult
 	 */
-	public static void ShowDialog(Activity activity, String title, String ok,
+	public static void showDialog(Context context, String title, String ok,
 			String cancel, String positiveButtonTextColor,
 			String negativeButtonTextColor, String positiveButtonStyle,
 			String negativeButtonStyle, float positiveButtonTextSize,
 			float negativeButtonTextSize, final IAlertDialogResult iDialogResult) {
-		final MyAlertDialog dialog = new MyAlertDialog(activity);
+		final MyAlertDialog dialog = new MyAlertDialog(context);
 		dialog.setCancelable(true);
 		dialog.setCanceledOnTouchOutside(true);
 		dialog.setMessage(title);
@@ -116,9 +111,9 @@ public class AGDialogUtil {
 		dialog.show();
 	}
 
-	public static void ShowDialogLeft(Activity activity, String title,
+	public static void showDialogLeft(Context context, String title,
 			String ok, String cancel, final IAlertDialogResult iDialogResult) {
-		final MyAlertDialog dialog = new MyAlertDialog(activity);
+		final MyAlertDialog dialog = new MyAlertDialog(context);
 		dialog.setCancelable(true);
 		dialog.setCanceledOnTouchOutside(true);
 		dialog.setMessageLeft(title);
@@ -148,14 +143,16 @@ public class AGDialogUtil {
 		dialog.show();
 	}
 
-	public static void ShowDialogAndFinish(final Activity activity, String msg) {
-		final MyAlertDialog dialog = new MyAlertDialog(activity);
+	public static void showDialogAndFinish(final Context context, String msg) {
+		final MyAlertDialog dialog = new MyAlertDialog(context);
 		dialog.setCancelable(false);
 		dialog.setMessage(msg);
 		dialog.setNegativeButton("确定", new OnClickListener() {
 			public void onClick(View v) {
 				dialog.dismiss();
-				activity.finish();
+				if (context instanceof Activity) {
+					((Activity)context).finish();
+				}
 			}
 		});
 	}
@@ -163,58 +160,43 @@ public class AGDialogUtil {
 	/**
 	 * 接口返回数据为空，检查是否有网络
 	 * 
-	 * @param activity
+	 * @param context
 	 */
-	public static void DataNullAndCheckNetDialog(Activity activity) {
-		DataNullAndCheckNetDialog(activity, true);
+	public static void dataNullAndCheckNetDialog(Context context) {
+		dataNullAndCheckNetDialog(context, true);
 	}
 
-	public static void DataNullAndCheckNetDialog(final Activity activity,
+	public static void dataNullAndCheckNetDialog(final Context context,
 			final boolean isFinish) {
-		if (!NetworkStateUtils.isNetworkConnected(activity)) {
-			if (isFinish)
-				activity.finish();
+		if (!NetworkStateUtils.isNetworkConnected(context)) {
+			if (isFinish && context instanceof Activity) {
+				((Activity)context).finish();
+			}
 			return;
 		}
 
-		final MyAlertDialog dialog = new MyAlertDialog(activity);
+		final MyAlertDialog dialog = new MyAlertDialog(context);
 		dialog.setCancelable(false);
 		dialog.setMessage("请检查网络是否可用！");
 		dialog.setNegativeButton("确定", new OnClickListener() {
 			public void onClick(View v) {
 				dialog.dismiss();
-				if (isFinish)
-					activity.finish();
+				if (isFinish && context instanceof Activity) {
+					((Activity)context).finish();
+				}
 			}
 		});
-	}
-
-	public static void SetEdittextPosition(EditText editText) {
-		CharSequence text = editText.getText();
-		if (text instanceof Spannable) {
-			Spannable spanText = (Spannable) text;
-			Selection.setSelection(spanText, text.length());
-		}
-	}
-
-	public static Drawable GetDrawableById(Context context, int imgid) {
-		Resources res = context.getResources();
-		Drawable img_off = res.getDrawable(imgid);
-		// 调用setCompoundDrawables时，必须调用Drawable.setBounds()方法,否则图片不显示
-		img_off.setBounds(0, 0, img_off.getMinimumWidth(),
-				img_off.getMinimumHeight());
-		return img_off;
 	}
 
 	/**
 	 * result为空,只有一个关闭按钮，关闭当前界面
 	 * 
-	 * @param activity
+	 * @param context
 	 * @param msg
 	 */
-	public static void alertNullDialog(final Activity activity, String msg,
+	public static void alertNullDialog(final Context context, String msg,
 			final IDialogResult iDialogResult) {
-		final MyAlertDialog alertDialog = new MyAlertDialog(activity);
+		final MyAlertDialog alertDialog = new MyAlertDialog(context);
 		if (msg != null) {
 			alertDialog.setMessage(msg);
 		} else {
@@ -226,7 +208,6 @@ public class AGDialogUtil {
 				if (iDialogResult != null) {
 					iDialogResult.onSuccess(true);
 				}
-				// application.finishActivity(activity);
 			}
 		});
 		alertDialog.setCancelable(false);

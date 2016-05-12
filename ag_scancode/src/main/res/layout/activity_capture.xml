@@ -31,7 +31,8 @@
             android:id="@+id/layout_img_scan_bg"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@drawable/bg_scan" />
+            android:scaleType="fitXY"
+            android:src="@drawable/bg_scan" />
 
         <ImageButton
             android:id="@+id/btn_scanlog"

@@ -201,7 +201,7 @@ public abstract class BaseWebViewActivity extends Activity {
 
     public void showPayPage(){
         //弹出支付窗口
-        AGDialogUtil.ShowDialog(this, "是否确定放弃付款", "确定", "取消", new IAlertDialogResult() {
+        AGDialogUtil.showDialog(this, "是否确定放弃付款", "确定", "取消", new IAlertDialogResult() {
             @Override
             public void resultCancel() {
 

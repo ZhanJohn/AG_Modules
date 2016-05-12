@@ -1,10 +1,12 @@
 package com.ag.common.other;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 
 import com.ag.common.res.AGResource;
@@ -117,6 +119,19 @@ public class AGActivity {
 		fragment.startActivityForResult(intent, request);
 	}
 
+	public static void showSystemSetting(Context context){
+		Intent intent=new Intent(Settings.ACTION_SETTINGS);
+		context.startActivity(intent);
+	}
 
+	public static void showSystemWifiSetting(Context context){
+		Intent intent=new Intent(Settings.ACTION_WIFI_SETTINGS);
+		context.startActivity(intent);
+	}
+
+	public static void showSystemApnSetting(Context context){
+		Intent intent=new Intent(Settings.ACTION_APN_SETTINGS);
+		context.startActivity(intent);
+	}
 	
 }

@@ -26,7 +26,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".VideoActivity" />
-        <activity android:name=".SwipeMenuActivity"></activity>
+        <activity android:name=".SwipeMenuActivity" />
+        <activity android:name=".ImageViewActivity"></activity>
     </application>
 
 </manifest>

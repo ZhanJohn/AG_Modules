@@ -21,7 +21,9 @@ import android.widget.TextView;
 import com.ag.controls.common.util.ResourceUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 public class ViewFlow extends AdapterView<Adapter> {
 
@@ -790,16 +792,21 @@ public class ViewFlow extends AdapterView<Adapter> {
 
     // 设置标题
     private TextView tv_title;
-    private String[] titles;
+    private List<String> titles;
 
     public void setTitleData(TextView tv_title, String[] titles) {
+        this.tv_title = tv_title;
+        this.titles = Arrays.asList(titles);
+    }
+
+    public void setTitleData(TextView tv_title, List<String> titles) {
         this.tv_title = tv_title;
         this.titles = titles;
     }
 
     private void setTitleShow() {
         if (tv_title != null && titles != null) {
-            tv_title.setText(titles[mCurrentAdapterIndex % titles.length]);
+            tv_title.setText(titles.get(mCurrentAdapterIndex % titles.size()));
         }
     }
 
