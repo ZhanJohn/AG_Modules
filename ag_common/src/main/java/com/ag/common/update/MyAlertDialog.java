@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
 
+import com.ag.common.R;
 import com.ag.common.res.AGResource;
 import com.ag.common.screen.ScreenUtils;
 import com.ag.common.ui.LayoutEnum;
@@ -46,7 +47,7 @@ public class MyAlertDialog {
 	public MyAlertDialog(Context context) {
 		// TODO Auto-generated constructor stub
 		this.context = context;
-		dialogBuilder = new Builder(context);
+		dialogBuilder = new Builder(context, R.style.DialogNormalStyle);
 		ad = dialogBuilder.create();
 		ad.show();
 		// 关键在下面的两行,使用window.setContentView,替换整个对话框窗口的布局

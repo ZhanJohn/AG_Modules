@@ -53,7 +53,7 @@ public class AGWebViewControl {
 	public AGChromeClient chromeClient;//方便处理upload file的回调
 
 	private long timeout = 30*1000;
-	private static final String App_Request_Header_Key="app";
+	private String App_Request_Header_Key="";//app
 	private static final String Error_Url="file:///android_asset/error.htm";
 	private static String AuthLogin_Url="";
 	private String Index_Url="";
@@ -74,6 +74,7 @@ public class AGWebViewControl {
 		this.layout_tv_title=controlParams.getLayout_tv_title();
 		this.Index_Url=controlParams.getIndex_Url();
 		this.AuthLogin_Url=controlParams.getAuthLogin_Url();
+		this.App_Request_Header_Key=controlParams.getApp_Request_Header_Key();
 		if(controlParams.getTimeout()>30*1000){
 			this.timeout=controlParams.getTimeout();
 		}
@@ -123,7 +124,7 @@ public class AGWebViewControl {
 //		settings.setGeolocationEnabled(controlParams.ismGeolocationPermission());
 //		settings.setJavaScriptCanOpenWindowsAutomatically(true);
 		if(isAddRequestHeader())
-			settings.setUserAgentString(settings.getUserAgentString()+" APP/2");
+			settings.setUserAgentString(settings.getUserAgentString()+String.format(" %s/2",App_Request_Header_Key));
 		Log.d(TAG,"userAgent==" + webView.getSettings().getUserAgentString());
 
 		//初始化缓存配置

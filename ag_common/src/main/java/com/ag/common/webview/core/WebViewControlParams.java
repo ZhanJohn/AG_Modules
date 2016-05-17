@@ -17,7 +17,7 @@ public class WebViewControlParams implements Serializable {
     private String loadUrl;
 
     private long timeout = 30*1000;
-    private String App_Request_Header_Key="agapp";
+    private String App_Request_Header_Key="";
     private String Error_Url="file:///android_asset/error.htm";
     private String AuthLogin_Url="";
     private String Index_Url="";
